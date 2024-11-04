@@ -9,16 +9,22 @@
 </head>
 <body>
     <h1>Keg washer Control</h1>
+    <p>update 2.57</p>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
         <input type="text" id="variable1" name="variable1" required>
         <button type="submit">Update</button>
     </form>
+    
     <script>
         $('#control-form').on('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevent the default form submission
+
+            // Log form data for debugging
+            console.log('Form data:', $(this).serialize());
+
             $.post({
-                url: 'http://10.0.0.13:5000/update', // Update this with your Raspberry Pi's IP
+                url: 'http://10.0.0.13:5000/update', // Update with your Raspberry Pi's IP
                 data: $(this).serialize(),
                 cache: false,
                 success: function(response) {
@@ -29,7 +35,7 @@
                 error: function(xhr, status, error) {
                     const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An unknown error occurred';
                     alert('Error: ' + errorMessage);
-
+                    console.error('Error details:', xhr); // Log error details to the console
                 }
             });
         });
