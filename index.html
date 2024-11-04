@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keg washr Control</title>
+    <title>Keg washer Control</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Keg washr Control</h1>
+    <h1>Keg washer Control</h1>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
-        <input type="text" id="variable1" name="variable1">
+        <input type="text" id="variable1" name="variable1" required>
         <button type="submit">Update</button>
     </form>
     <script>
         $('#control-form').on('submit', function(e) {
             e.preventDefault();
-            $.post('http://10.0.0.13:5000/update', $(this).serialize(), function(response) {
-                if (response.success) {
-                    alert('Variable updated to: ' + response.new_value);
+            $.post({
+                url: 'http://10.0.0.13:5000/update', // Update this with your Raspberry Pi's IP
+                data: $(this).serialize(),
+                cache: false,
+                success: function(response) {
+                    if (response.success) {
+                        alert('Variable updated to: ' + response.new_value);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
                 }
+            });
         });
-    });
     </script>
 </body>
 </html>
