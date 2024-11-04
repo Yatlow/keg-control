@@ -11,18 +11,10 @@
     <h1>Keg washr Control</h1>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
-        <input type="text" id="variable1" name="variable1" value="{{1.5}}">
+        <input type="text" id="variable1" name="variable1">
         <button type="submit">Update</button>
     </form>
     <script>
-        $('#control-form').on('submit', function(e) {
-            e.preventDefault();
-            $.post('/update', $(this).serialize(), function(response) {
-                if (response.success) {
-                    alert('Variable updated to: ' + response.new_value);
-                }
-            });
-        });
         $('#control-form').on('submit', function(e) {
             e.preventDefault();
             $.post('http://10.0.0.13:5000/update', $(this).serialize(), function(response) {
