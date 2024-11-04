@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Machine</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Control Machine</h1>
+    <form id="control-form">
+        <label for="variable1">Variable 1:</label>
+        <input type="text" id="variable1" name="variable1" value="{{ variable1 }}">
+        <button type="submit">Update</button>
+    </form>
+    <script>
+        $('#control-form').on('submit', function(e) {
+            e.preventDefault();
+            $.post('/update', $(this).serialize(), function(response) {
+                if (response.success) {
+                    alert('Variable updated to: ' + response.new_value);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
