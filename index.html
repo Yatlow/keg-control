@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Machine</title>
+    <title>Keg washr Control</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Control Machine</h1>
+    <h1>Keg washr Control</h1>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
-        <input type="text" id="variable1" name="variable1" value="{{ variable1 }}">
+        <input type="text" id="variable1" name="variable1" value="{{1.5}}">
         <button type="submit">Update</button>
     </form>
     <script>
@@ -23,6 +23,14 @@
                 }
             });
         });
+        $('#control-form').on('submit', function(e) {
+            e.preventDefault();
+            $.post('http://10.0.0.13:5000/update', $(this).serialize(), function(response) {
+                if (response.success) {
+                    alert('Variable updated to: ' + response.new_value);
+                }
+        });
+    });
     </script>
 </body>
 </html>
