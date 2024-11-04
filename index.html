@@ -26,17 +26,28 @@
             <div class="d-none d-md-block col-md-1"></div>
         </div>
      
-        <div class="container-fluid formBox">
-            <form id="control-form">
-                <label for="variable1">Variable 1:</label>
-                <input type="text" id="variable1" name="variable1" required>
-                <label for="variable2">Variable 2:</label>
-                <input type="text" id="variable2" name="variable2" required>
-                <label for="variable3">Variable 3:</label>
-                <input type="text" id="variable3" name="variable3" required>
+        <form id="control-form">
+            <div class="formBox">
+                <div class="functionBox container-fluid">
+                    <div class="functionLabel row">שלב #1 דחיקת בירה החוצה עם אוויר</div>
+                    <div class="functionInputs row">
+                        <div class="col-12 col-md-2 ParamterBox">
+                            <label for="FirstAirPurgeRecure">כמות חזרות</label>
+                            <input type="text" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
+                            <input type="text" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
+                            <input type="text" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required>
+                        </div>
+                    </div>
+                </div>
                 <button type="submit">Update</button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 
 

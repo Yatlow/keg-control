@@ -2,12 +2,9 @@ html{
     height: 100%;
     box-sizing: border-box;
     direction: rtl;
-    background-color: #F2D67E;
 }
 .MainBox{
     font-family: 'Courier New';
-    background-color: #F2D67E;
-    /* background-color: #DFB725; */
 }
 .headBox{
     overflow-wrap: normal;
@@ -24,7 +21,32 @@ html{
     width: auto;
     object-fit: scale-down;
 }
-
+.formBox{
+    width: 80%;
+    margin-right: 10%;
+}
+.functionBox{
+    border: solid 0.6px rgb(200, 200, 200,0.7);
+    border-radius: 20px;
+}   
+.functionLabel{
+    padding: 10px;
+    padding-right: 20px;
+    border-radius: 20px 20px 0 0 ;
+    background-color: #DFB725;
+}
+.functionInputs{
+    border-radius: 0 0 20px 20px;
+    padding: 10px 0 10px 0;
+    padding-right: 20px;
+    background-color: #F2D67E;
+}
+.functionInputs input{
+    width: 45px;
+}
+.ParamterBox label{
+    overflow-wrap: break-word;
+}
 
 @media (max-width: 1400px) {/* Medium screens */
     .H1{
