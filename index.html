@@ -24,15 +24,15 @@
        $('#control-form').on('submit', function(e) {
             e.preventDefault(); // Prevent the default form submission
 
-            // Log form data for debugging
-            console.log('Form data:', $(this).serialize());
-
             // Prepare data to send
             const variableData = {
-                index0: $('#variable1').val(), // Variable 1, assigned index 0
-                index1: $('#variable2').val(), // Variable 2, assigned index 1
-                index2: $('#variable3').val()  // Variable 3, assigned index 2
+                index0: $('#variable1').val() || 0, // Fallback to 0 if empty
+                index1: $('#variable2').val() || 0, // Fallback to 0 if empty
+                index2: $('#variable3').val() || 0  // Fallback to 0 if empty
             };
+
+            // Log form data for debugging
+            console.log('Form data:', variableData);
 
             // Send data to the Flask backend
             $.post({
