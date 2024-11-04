@@ -1,0 +1,32 @@
+html{
+    height: 100%;
+    box-sizing: border-box;
+    direction: rtl;
+    background-color: #F2D67E;
+}
+.MainBox{
+    font-family: 'Courier New';
+    min-height: 100%;
+    /* border: solid; */
+    background-color: #F2D67E;
+    /* background-color: #DFB725; */
+}
+.headBox{
+    margin-top: 3vh;
+    text-align: center;
+    max-height: 30vh;
+    overflow: hidden;
+}
+.HeadinfoBox,.h1Box{
+    max-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.H1{
+    font-size: 50px;
+}
+.logo{
+    height: auto;
+    margin-top: -10vh;
+}

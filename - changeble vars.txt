@@ -1,0 +1,104 @@
+- changeble vars
+
+firstAirPurge[
+	recure=1
+	purgetimeon=1
+	purgetimeoff=1.5
+]
+
+water squirt [
+	initialflud= 4 (400*0.01)
+
+	recure med squirt=6
+	med squirt water on leangth = 0.4 (40*0.01)
+	med squirt water off leangth= 0.3 (30*0.01)
+
+	recure short squirt=5
+	short squirt water on leangth= 0.2 (20*0.01)
+	short squirt water off leangth= 0.15 (15*0.01)
+
+	recure long squirt=5
+	long squirt water on leangth = 1.6 (160*0.01)
+	short squirt water off leangth= 1.6 (160*0.01)
+
+	squirt water with pump leangth= 11 (1100*0.01)
+]
+
+post initial water rinse air purge[
+	recure=5
+	purgetimeon=1
+	purgetimeoff=2
+]
+
+caustic rinse[
+	initial caustic flud both kegs= 5 (500*0.01)
+	caustic rinse keg 1=15 (1500*0.01)
+	caustic rinse keg 2=15 (1500*0.01)
+	pressurize caustic in keg with closed outpots=10 (1000*0.01)
+	caustic soak in keg with closed outpots=15 (1500*0.01)
+	second caustic flud both kegs= 15 (1500*0.01)
+	caustic initial pump squirt[
+		recure=15
+		pump on= 0.3 (30*0.01)
+		pump of= 0.3 (30*0.01)
+	]
+	caustic pump squirt with air[
+		recure=7
+		air and pump intervale= 0.2 (20*0.01)
+	]
+	caustic post air pump squirt[
+		recure=7
+		pump on= 1.2 (120*0.01)
+		pump of= 1.2 (120*0.01)
+	]
+]
+
+caustic air purge[
+	recure=3
+	purgetimeon=0.75
+	purgetimeoff=1
+]
+
+post caustic watret rinse[
+	recure= 3
+	in betweein rinse air purge[
+		recure=5
+		purgetimeon=1
+		purgetimeoff=2
+	]
+]
+
+paa sanitize[
+	sanitize keg 1= 35 (3500*0.01)
+	sanitize keg 2= 35 (3500*0.01)
+	sanitize both kegs= 10 (1000*0.01)
+	paa initial pump squirt[
+		recure=15
+		pump on= 0.3 (30*0.01)
+		pump of= 0.3 (30*0.01)
+	]
+	paa pump squirt with co2[
+		recure=7
+		air and pump intervale= 1.2 (120*0.01)
+	]
+	post squirt sanitize both kegs= 10 (1000*0.01)
+
+paa purge[
+	co2 purge keg1- recure=9
+	co2 purge keg1- gas open=0.7 (70*0.01)
+	co2 purge keg1- gas closed=2.4 (240*0.01)
+	co2 purge keg2- recure=9
+	co2 purge keg2- gas open=0.7 (70*0.01)
+	co2 purge keg2- gas closed=2.4 (240*0.01)
+	co2 purge both kegs- gas open= 5 (500*0.01)
+	let paa come out after closing co2= 5 (500*0.01)
+]
+
+keg pressurize[
+	keg pressure setination=15
+	timed out to reach keg pressure destination=12
+	adiitional pressure after time out = 15
+	pressurizing time if pressure sensors are off=35 (3500*0.01)
+]
+
+9 stages
