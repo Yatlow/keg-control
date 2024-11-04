@@ -28,6 +28,7 @@ html{
 .functionBox{
     border: solid 0.6px rgb(200, 200, 200,0.7);
     border-radius: 20px;
+    margin-bottom: 30px;
 }   
 .functionLabel{
     padding: 10px;
@@ -37,8 +38,7 @@ html{
 }
 .functionInputs{
     border-radius: 0 0 20px 20px;
-    padding: 10px 0 10px 0;
-    padding-right: 20px;
+    padding: 10px 8px 10px 0;
     background-color: #F2D67E;
 }
 .functionInputs input{
