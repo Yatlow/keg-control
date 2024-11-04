@@ -21,7 +21,7 @@ water squirt [
 	long squirt water on leangth = 1.6 (160*0.01)
 	short squirt water off leangth= 1.6 (160*0.01)
 
-	squirt water with pump leangth= 11 (1100*0.01)
+	rinse water with pump leangth= 11 (1100*0.01)
 ]
 
 post initial water rinse air purge[
