@@ -9,27 +9,39 @@
 </head>
 <body>
     <h1>Keg washer Control</h1>
-    <p>update 3:20</p>
+    <p>update 04/11 17:09</p>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
         <input type="text" id="variable1" name="variable1" required>
+        <label for="variable2">Variable 2:</label>
+        <input type="text" id="variable2" name="variable2" required>
+        <label for="variable3">Variable 3:</label>
+        <input type="text" id="variable3" name="variable3" required>
         <button type="submit">Update</button>
     </form>
     
     <script>
-        $('#control-form').on('submit', function(e) {
+       $('#control-form').on('submit', function(e) {
             e.preventDefault(); // Prevent the default form submission
 
             // Log form data for debugging
             console.log('Form data:', $(this).serialize());
 
+            // Prepare data to send
+            const variableData = {
+                index0: $('#variable1').val(), // Variable 1, assigned index 0
+                index1: $('#variable2').val(), // Variable 2, assigned index 1
+                index2: $('#variable3').val()  // Variable 3, assigned index 2
+            };
+
+            // Send data to the Flask backend
             $.post({
                 url: 'https://10.0.0.13:5000/update', // Update with your Raspberry Pi's IP
-                data: $(this).serialize(),
+                data: variableData,
                 cache: false,
                 success: function(response) {
                     if (response.success) {
-                        alert('Variable updated to: ' + response.new_value);
+                        alert('Variables updated to: ' + JSON.stringify(response.new_values));
                     }
                 },
                 error: function(xhr, status, error) {
@@ -39,6 +51,6 @@
                 }
             });
         });
-    </script>
+</script>
 </body>
 </html>
