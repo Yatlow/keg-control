@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Keg washer Control</h1>
-    <p>update 2.57</p>
+    <p>update 3:20</p>
     <form id="control-form">
         <label for="variable1">Variable 1:</label>
         <input type="text" id="variable1" name="variable1" required>
@@ -24,7 +24,7 @@
             console.log('Form data:', $(this).serialize());
 
             $.post({
-                url: 'http://10.0.0.13:5000/update', // Update with your Raspberry Pi's IP
+                url: 'https://10.0.0.13:5000/update', // Update with your Raspberry Pi's IP
                 data: $(this).serialize(),
                 cache: false,
                 success: function(response) {
