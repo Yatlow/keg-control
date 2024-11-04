@@ -11,29 +11,32 @@
 <body>
     <div class="container-fluid MainBox">
         <div class="headBox row">
-            <div class="col-1"></div>
-            <div class="h1Box col-5">
+            <div class="d-none d-md-block col-md-1"></div>
+            <div class="h1Box col-12 col-md-5">
                 <div class="H1">שליטה בפרמטרים למשטף חביות</div>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <img  class="logo img-fluid" src="assets/pics/hatch_logoblack_clear_Background.png">
             </div> 
-            <div class="col-2 HeadinfoBox">
+            <div class="col-12 col-md-2 HeadinfoBox">
                 <div class="Headinfo">עדכון אחרון 04/11 17:09</div>
                 <div class="Headinfo">V 5.1.1</div>
                 <div class="Headinfo">&copy; ישראל אטלו</div>
             </div> 
-            <div class="col-1"></div>
+            <div class="d-none d-md-block col-md-1"></div>
         </div>
-        <form id="control-form" class="formBox">
-            <label for="variable1">Variable 1:</label>
-            <input type="text" id="variable1" name="variable1" required>
-            <label for="variable2">Variable 2:</label>
-            <input type="text" id="variable2" name="variable2" required>
-            <label for="variable3">Variable 3:</label>
-            <input type="text" id="variable3" name="variable3" required>
-            <button type="submit">Update</button>
-        </form>
+     
+        <div class="container-fluid formBox">
+            <form id="control-form">
+                <label for="variable1">Variable 1:</label>
+                <input type="text" id="variable1" name="variable1" required>
+                <label for="variable2">Variable 2:</label>
+                <input type="text" id="variable2" name="variable2" required>
+                <label for="variable3">Variable 3:</label>
+                <input type="text" id="variable3" name="variable3" required>
+                <button type="submit">Update</button>
+            </form>
+        </div>
     </div>
 
 

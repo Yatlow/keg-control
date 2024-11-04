@@ -6,27 +6,54 @@ html{
 }
 .MainBox{
     font-family: 'Courier New';
-    min-height: 100%;
-    /* border: solid; */
     background-color: #F2D67E;
     /* background-color: #DFB725; */
 }
 .headBox{
-    margin-top: 3vh;
+    overflow-wrap: normal;
+    padding-top: 6vh;
     text-align: center;
-    max-height: 30vh;
-    overflow: hidden;
 }
+
 .HeadinfoBox,.h1Box{
-    max-height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.H1{
-    font-size: 50px;
-}
 .logo{
-    height: auto;
-    margin-top: -10vh;
+    width: auto;
+    object-fit: scale-down;
+}
+
+
+@media (max-width: 1400px) {/* Medium screens */
+    .H1{
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .logo{
+        height: 200px;
+    }
+    .formBox{
+        margin-top: 10vh;
+    }
+}
+@media (max-width: 768px) {/*small screens */
+    .H1{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .headBox{
+        div{margin: 1vh;}
+    }
+    .Headinfo{
+        margin: 0;
+        font-size: 15px;
+    }
+    .logo{
+        height: 100px;
+    }
+    .formBox{
+        margin-top: 5vh;
+    }
 }
