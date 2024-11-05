@@ -52,7 +52,7 @@ caustic rinse[
 		pump of= 1.2 (120*0.01)
 	]
 ]
-
+#built up to here!
 caustic air purge[
 	recure=3
 	purgetimeon=0.75

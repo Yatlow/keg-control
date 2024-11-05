@@ -19,7 +19,7 @@ html{
 .HeadinfoBox,.h1Box{
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 .logo{
     width: auto;
