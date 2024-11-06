@@ -28,6 +28,32 @@
      
         <form id="control-form" method="POST" >
             <div class="formBox">
+                <!-- stage 0 -->
+                <div class="functionBox container-fluid">
+                    <div class="FirstfunctionLabel functionLabel row">
+                        <div class="col-3">
+                            <div>סייקל בדיקה ראשוני</div>
+                        </div>
+                        <div class="col-3 FNCTTglBox">
+                            <div>|</div>
+                            <div id="PrebootToggleHousing" class="FNCTglHouse">
+                                <div class="FNCTglBtn" id="PrebootToggleBtn"></div>
+                            </div>
+                            <div>O</div>
+                        </div>
+                        <div class="col-3">
+                            <div>חיישני לחץ</div>
+                            <div class="note">יפעל רק אם המתג המכני מופעל!</div>
+                        </div>
+                        <div class="col-3 FNCTTglBox">
+                            <div>|</div>
+                            <div id="PressureToggleHousing" class="FNCTglHouse">
+                                <div class="FNCTglBtn" id="PresuureToggleBtn"></div>
+                            </div>
+                            <div>O</div>
+                        </div>
+                    </div>
+                </div>
                 <!-- stage 1 -->
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label1">
@@ -434,6 +460,71 @@
     "PostTimeOutBuildP", "PTimeWhenSensorDisabled"
 ];
         
+        const disabledInputs= [
+        "kegPdestination", "TimeOutPdestination", "PostTimeOutBuildP"
+        ]
+
+        const LabelList = [
+        "label1",
+        "PrebootToggleHousing",
+        "PressureToggleHousing",
+        "label2",
+        "label3",
+        "label4",
+        "label5",
+        "label6",
+        "label7",
+        "label8",
+        "label9"
+        ]
+
+        function DisableItems(){
+            let confirmBox = document.getElementById("confirmBox");
+            let body = document.getElementById("bodyBox");
+            confirmBox.classList.remove("hiddenBox");  // Remove hidden class
+            confirmBox.classList.add("infoBox");       // Add infoBox class
+            body.classList.add("disable_scroll");       // Add infoBox class
+            let form = document.getElementById("control-form");
+            let formElements = form.elements;
+            for (let i = 0; i < formElements.length; i++) {
+                formElements[i].disabled = true;  // Disable each form element
+            }
+            let exitBnt= document.getElementById("exitConfirm");
+            exitBnt.disabled = false
+            LabelList.forEach(function(labelId) {
+                let LabelElemnt = form.querySelector(`#${labelId}`);
+                if (LabelElemnt) {
+                    LabelElemnt.classList.add("functionLabelDisable");
+                }
+            });
+        }
+
+        let preboobot= 1
+        let pressure= 1
+        
+        $('#PrebootToggleHousing').on('click',function(){
+            let FNCTglBtn = document.getElementById("PrebootToggleHousing");
+            if (preboobot== 1){
+                FNCTglBtn.classList.add("FNCTglHouseOFF");
+                preboobot=0
+            }
+            else if (preboobot== 0){
+                FNCTglBtn.classList.remove("FNCTglHouseOFF");
+                preboobot=1
+            }
+        })
+        $('#PressureToggleHousing').on('click',function(){
+            let FNCTglBtn = document.getElementById("PressureToggleHousing");
+            if (pressure== 1){
+                FNCTglBtn.classList.add("FNCTglHouseOFF");
+                pressure=0
+            }
+            else if (pressure== 0){
+                FNCTglBtn.classList.remove("FNCTglHouseOFF");
+                pressure=1
+            }
+        })
+
         $(document).ready(function() {
                 // Initial fetch of variable values when page loads
             $.ajax({
@@ -443,17 +534,7 @@
                     if (response.success) {
                         var inner = document.getElementById("conirmContent");
                         inner.innerHTML = 'נתונים נטענו בהצלחה מהשרת!';
-                        let confirmBox = document.getElementById("confirmBox");
-                        let body = document.getElementById("bodyBox");
-                        confirmBox.classList.remove("hiddenBox");  // Remove hidden class
-                        confirmBox.classList.add("infoBox");       // Add infoBox class
-                        body.classList.add("disable_scroll");       // Add infoBox class
-                        let form = document.getElementById("control-form");
-                        let formElements = form.elements;
-                        for (let i = 0; i < 59; i++) {
-                            formElements[i].disabled = true;  // Disable each form element
-                        }
-                        // alert('Variables loaded to: ' + JSON.stringify(response.new_values));
+                        DisableItems()
                         // Populate form fields with initial values
                         // $('#FirstAirPurgeRecure').val(response.initial_values.FirstAirPurgeRecure);
                         // $('#FirstAirPurgeTon').val(response.initial_values.FirstAirPurgeTon);
@@ -471,16 +552,7 @@
                 error: function(xhr, status, error) {
                     var inner = document.getElementById("conirmContent");
                     inner.innerHTML = 'תקלה בתקשורת לשרת!';
-                    let confirmBox = document.getElementById("confirmBox");
-                    let body = document.getElementById("bodyBox");
-                    confirmBox.classList.remove("hiddenBox");  // Remove hidden class
-                    confirmBox.classList.add("infoBox");       // Add infoBox class
-                    body.classList.add("disable_scroll");       // Add infoBox class
-                    let form = document.getElementById("control-form");
-                    let formElements = form.elements;
-                    for (let i = 0; i < 59; i++) {
-                        formElements[i].disabled = true;  // Disable each form element
-                    }
+                    DisableItems()
                     const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'Failed to load initial values';
                     console.error('Error loading initial values:', errorMessage);
                 }
@@ -496,12 +568,21 @@
             body.classList.remove("disable_scroll");
             let form = document.getElementById("control-form");
             let formElements = form.elements;
-            for (let i = 0; i < 59; i++) {
+            for (let i = 0; i < formElements.length; i++) {
                 formElements[i].disabled = false;  // Disable each form element
             }
-            for (let z = 53; z < 56; z++) {
-                formElements[z].disabled = true;  // Disable each form element
-            }
+            disabledInputs.forEach(function(inputId) {
+                let inputElement = form.querySelector(`#${inputId}`);
+                if (inputElement) {
+                    inputElement.disabled = true;
+                }
+            });
+            LabelList.forEach(function(labelId) {
+                let LabelElemnt = form.querySelector(`#${labelId}`);
+                if (LabelElemnt) {
+                    LabelElemnt.classList.remove("functionLabelDisable");
+                }
+            });
         });
 
         $('#control-form').on('submit', function(e) {
@@ -533,16 +614,7 @@
                         if (response.success) {
                             var inner = document.getElementById("conirmContent");
                             inner.innerHTML = 'נתונים עודכנו בהצלחה בשרת!';
-                            let confirmBox = document.getElementById("confirmBox");
-                            let body = document.getElementById("bodyBox");
-                            confirmBox.classList.remove("hiddenBox");  // Remove hidden class
-                            confirmBox.classList.add("infoBox");       // Add infoBox class
-                            body.classList.add("disable_scroll");
-                            let form = document.getElementById("control-form");
-                            let formElements = form.elements;
-                            for (let i = 0; i < 59; i++) {
-                                formElements[i].disabled = true;  // Disable each form element
-                            }       
+                            DisableItems()      
                             // alert('Variables updated to: ' + JSON.stringify(response.new_values));
                             // $('#FirstAirPurgeRecure').val(response.new_values[0]);
                             // $('#FirstAirPurgeTon').val(response.new_values[1]);
@@ -561,16 +633,7 @@
                         // alert('Error: ' + errorMessage);
                         var inner = document.getElementById("conirmContent");
                         inner.innerHTML = 'תקלה בתקשורת לשרת!';
-                        let confirmBox = document.getElementById("confirmBox");
-                        let body = document.getElementById("bodyBox");
-                        confirmBox.classList.remove("hiddenBox");  // Remove hidden class
-                        confirmBox.classList.add("infoBox");       // Add infoBox class
-                        body.classList.add("disable_scroll");
-                        let form = document.getElementById("control-form");
-                        let formElements = form.elements;
-                        for (let i = 0; i < 59; i++) {
-                            formElements[i].disabled = true;  // Disable each form element
-                        }
+                        DisableItems()
                         console.error('Error details:', xhr); // Log error details to the console
                     }
                 });
@@ -584,16 +647,7 @@
                     if (response.success) {
                         var inner = document.getElementById("conirmContent");
                         inner.innerHTML = 'עודכנו נתוני ברירת מחדל';
-                        let confirmBox = document.getElementById("confirmBox");
-                        let body = document.getElementById("bodyBox");
-                        confirmBox.classList.remove("hiddenBox");  // Remove hidden class
-                        confirmBox.classList.add("infoBox");       // Add infoBox class
-                        body.classList.add("disable_scroll");
-                        let form = document.getElementById("control-form");
-                        let formElements = form.elements;
-                        for (let i = 0; i < 59; i++) {
-                            formElements[i].disabled = true;  // Disable each form element
-                        }
+                        DisableItems()
                         // alert('Values reset to default: ' + JSON.stringify(response.new_values));
                         // Update the form values with the default values returned from the backend
                         // $('#FirstAirPurgeRecure').val(response.new_values.FirstAirPurgeRecure);
@@ -630,7 +684,6 @@
             });
         }
 
-// Call this function for each label-stage pair
         toggleStage("label1", "stage1");
         toggleStage("label2", "stage2");
         toggleStage("label3", "stage3");

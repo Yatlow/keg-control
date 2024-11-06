@@ -33,6 +33,7 @@ html{
     width: 80%;
     margin-right: 10%;
     padding-bottom: 80px;
+    font-size: 16px;
 }
 .functionBox{
     border: solid 0.6px rgb(200, 200, 200,0.7);
@@ -51,7 +52,46 @@ html{
     justify-content: center;
 }
 .functionLabel:hover{
- cursor: pointer;   
+    cursor: pointer;   
+}
+.FirstfunctionLabel{
+    border-radius: 20px;
+    text-align: center;
+}
+.FirstfunctionLabel:hover{
+    cursor: default;
+}
+.FNCTTglBox{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.FNCTglHouse{
+    border: 2px solid #937002;
+    width: 100px;
+    height: 40px;
+    background-color: #FFE9A4;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    direction: rtl;
+}
+.FNCTglHouseOFF{
+    direction: ltr;
+}
+.FNCTglHouse:hover{
+    cursor: pointer;
+}
+.note{
+    font-size: 10px;
+}
+.FNCTglBtn{
+    border: none;
+    width: 50px;
+    height: 38px;
+    background-color: #D34607;
+    border-radius: 20px;
 }
 .TglBtnBox{
     display: flex;
@@ -68,6 +108,10 @@ html{
 }
 .functionLabelHiddenInput {
     border-radius: 20px;
+}
+.functionLabelDisable{
+    cursor: not-allowed;
+    pointer-events: none;
 }
 .functionInputsHidden{
     display: none;
