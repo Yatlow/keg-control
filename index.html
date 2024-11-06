@@ -19,7 +19,7 @@
                 <img  class="logo img-fluid" src="assets/pics/hatch_logoblack_clear_Background.png">
             </div> 
             <div class="col-12 col-md-2 HeadinfoBox">
-                <div class="Headinfo">עדכון אחרון 04/11 17:09</div>
+                <div class="Headinfo">עדכון אחרון 06/11 09:44</div>
                 <div class="Headinfo">V 5.1.1</div>
                 <div class="Headinfo">&copy; ישראל אטלו</div>
             </div> 
@@ -33,19 +33,178 @@
                     <div class="functionInputs row">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="FirstAirPurgeRecure">כמות חזרות</label>
-                            <input type="number" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}" placeholder="{{ settings['FirstAirPurgeRecure'] }}">
+                            <input type="number" step="0.1" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}" placeholder="{{ settings['FirstAirPurgeRecure'] }}">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
                             <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
-                            <input type="number" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required value="{{ settings['FirstAirPurgeTon'] }}">
+                            <input type="number" step="0.1" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required value="{{ settings['FirstAirPurgeTon'] }}">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
                             <label for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
-                            <input type="number" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required value="{{ settings['FirstAirPurgeToff'] }}">
+                            <input type="number" step="0.1" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required value="{{ settings['FirstAirPurgeToff'] }}">
                         </div>
                     </div>
                 </div>
                 
+
+                <!-- <div class="functionBox container-fluid">
+                    <div class="functionLabel row">שלב #2 שטיפה במים</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 ParamterBox">
+                            <label for="InitialWaterFlud">משך זמן מילוי מים ראשוני בשניות</label>
+                            <input type="number" step="0.1" id="InitialWaterFlud" name="InitialWaterFlud" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel">התזת מים בינונית</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="recureMedSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recureMedSquirt" name="recureMedSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="medSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="medSquirtWaterOn" name="medSquirtWaterOn" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="medSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="medSquirtWaterOff" name="medSquirtWaterOff" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel">התזת מים קצרה</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="recureShortSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recureShortSquirt" name="recureShortSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="ShortSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="ShortSquirtWaterOn" name="ShortSquirtWaterOn" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="ShortSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="ShortSquirtWaterOff" name="ShortSquirtWaterOff" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel fullborder">התזת מים ארוכה</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="recureLongSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recureLongSquirt" name="recureLongSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="LongSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="LongSquirtWaterOn" name="LongSquirtWaterOn" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="LongSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="LongSquirtWaterOff" name="LongSquirtWaterOff" required>
+                        </div>
+                    </div>
+                    <div class="functionInputs row">
+                        <div class="col-12 ParamterBox">
+                            <label for="RinseWaterWithPump">משך זמן רחיצה במים עם משאבה לבניית לחץ</label>
+                            <input type="number" step="0.1" id="RinseWaterWithPump" name="RinseWaterWithPump" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="functionBox container-fluid">
+                    <div class="functionLabel row">שלב #3 דחיקת מים לאחר שטיפה ראשונה החוצה עם אוויר</div>
+                    <div class="functionInputs row">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="PostWaterPurgeRecure">כמות חזרות</label>
+                            <input type="number" step="0.1" id="PostWaterPurgeRecure" name="PostWaterPurgeRecure" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="PostWaterPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="PostWaterPurgeTon" name="PostWaterPurgeTon" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="PostWaterPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.1" id="PostWaterPurgeToff" name="PostWaterPurgeToff" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="functionBox container-fluid">
+                    <div class="functionLabel row">שלב #4 ניקוי בסודה קאוסטיק</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 ParamterBox">
+                            <label for="InitialCausticFlud">משך זמן מילוי סודה קאוסטיק ראשוני- ל2 החביות בשניות</label>
+                            <input type="number" step="0.1" id="InitialCausticFlud" name="InitialCausticFlud" required>
+                        </div>
+                    </div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="CausticRinseKeg1">משך רחיצה קאוסטית חבית ימין בשניות</label>
+                            <input type="number" step="0.1" id="CausticRinseKeg1" name="CausticRinseKeg1" required>
+                        </div>
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="CausticRinseKeg2">משך רחיצה קאוסטית חבית שמאל בשניות</label>
+                            <input type="number" step="0.1" id="CausticRinseKeg2" name="CausticRinseKeg2" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel">כניסת קאוסטית לחבית ללא יציאת הקאוסטיק לבניית לחץ</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="pressurizeCausticInKeg">משך דחיסת הקאוסטיק לחבית בשניות</label>
+                            <input type="number" step="0.1" id="pressurizeCausticInKeg" name="pressurizeCausticInKeg" required>
+                        </div>
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="causticSoakInKeg">משך השריית קאוסטיק בחבית בלחץ בשניות</label>
+                            <input type="number" step="0.1" id="causticSoakInKeg" name="causticSoakInKeg" required>
+                        </div>
+                    </div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 ParamterBox">
+                            <label for="SecondCausticFlud">משך זמן מילוי סודה קאוסטיק שני- ל2 החביות בשניות</label>
+                            <input type="number" step="0.1" id="SecondCausticFlud" name="SecondCausticFlud" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel fullborder">התזת קאוסטיק קצרה</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="recureShortCausticSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recureShortCausticSquirt" name="recureShortCausticSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="CausticSquirtPumpOn">משך הפעלת משאבה בשניות</label>
+                            <input type="number" step="0.1" id="CausticSquirtPumpOn" name="CausticSquirtPumpOn" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="CausticSquirtPumpOff">משך כיבוי משאבה בשניות</label>
+                            <input type="number" step="0.1" id="CausticSquirtPumpOff" name="CausticSquirtPumpOff" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel fullborder">התזת קאוסטיק בשילוב אוויר</div>
+                    <div class="functionInputs row fullborder">
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="recurePurgeCausticSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recurePurgeCausticSquirt" name="recureShortCausticSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-6 ParamterBox">
+                            <label for="airAndPumpIntervale">אינטרוול אוויר ומשאבה בשניות</label>
+                            <input type="number" step="0.1" id="airAndPumpIntervale" name="airAndPumpIntervale" required>
+                        </div>
+                    </div>
+                    <div class="row functionSubLabel fullborder">התזת קאוסטיק ארוכה- לאחר התזה בשילוב אוויר</div>
+                    <div class="functionInputs row">
+                        <div class="col-12 col-md-3 ParamterBox">
+                            <label for="recureLastCausticSquirt">כמות חזרות</label>
+                            <input type="number" step="0.1" id="recureLastCausticSquirt" name="recureLastCausticSquirt" required>
+                        </div>
+                        <div class="col-12 col-md-4 ParamterBox">
+                            <label for="CausticLastSquirtPumpOn">משך הפעלת משאבה בשניות</label>
+                            <input type="number" step="0.1" id="CausticLastSquirtPumpOn" name="CausticLastSquirtPumpOn" required>
+                        </div>
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="CausticLastSquirtPumpOff">משך כיבוי משאבה בשניות</label>
+                            <input type="number" step="0.1" id="CausticLastSquirtPumpOff" name="CausticLastSquirtPumpOff" required>
+                        </div>
+                    </div>
+                    
+                </div> -->
+
+       
+
 
                 <button type="submit">Update</button>
                 <button type="button" id="reset-btn">Reset to Default</button>
@@ -58,57 +217,76 @@
 
 
     <script>
-       $('#control-form').on('submit', function(e) {
-            e.preventDefault(); // Prevent the default form submission
+        $(document).ready(function() {
+                // Initial fetch of variable values when page loads
+                    $.ajax({
+                        type: "GET",
+                        url: 'https://10.0.0.1:5000/get_initial_values', // Ensure this route is set up on the backend
+                        success: function(response) {
+                            if (response.success) {
+                                // Populate form fields with initial values
+                                alert('Variables loaded to: ' + JSON.stringify(response.new_values));
+                                $('#FirstAirPurgeRecure').val(response.initial_values.FirstAirPurgeRecure);
+                                $('#FirstAirPurgeTon').val(response.initial_values.FirstAirPurgeTon);
+                                $('#FirstAirPurgeToff').val(response.initial_values.FirstAirPurgeToff);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'Failed to load initial values';
+                            console.error('Error loading initial values:', errorMessage);
+                        }
+                    });
+                });               
+        $('#control-form').on('submit', function(e) {
+                e.preventDefault(); // Prevent the default form submission
 
-            // Prepare data to send
-            const variableData = {
-                index0: $('#FirstAirPurgeRecure').val() || 1, // Fallback to 0 if empty
-                index1: $('#FirstAirPurgeTon').val() || 1, // Fallback to 0 if empty
-                index2: $('#FirstAirPurgeToff').val() || 1.5  // Fallback to 0 if empty
-            };
+                // Prepare data to send
+                const variableData = {
+                    index0: $('#FirstAirPurgeRecure').val() || 1, // Fallback to 0 if empty
+                    index1: $('#FirstAirPurgeTon').val() || 1, // Fallback to 0 if empty
+                    index2: $('#FirstAirPurgeToff').val() || 1.5  // Fallback to 0 if empty
+                };
 
-            // Log form data for debugging
-            console.log('Form data:', variableData);
+                // Log form data for debugging
+                console.log('Form data:', variableData);
 
-            // Send data to the Flask backend
+                // Send data to the Flask backend
+                $.ajax({
+                    type: "POST",
+                    url: 'https://10.0.0.1:5000/update', // Update with your Raspberry Pi's IP
+                    data: variableData,
+                    cache: false,
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Variables updated to: ' + JSON.stringify(response.new_values));
+                            $('#FirstAirPurgeRecure').val(response.new_values[0]);
+                            $('#FirstAirPurgeTon').val(response.new_values[1]);
+                            $('#FirstAirPurgeToff').val(response.new_values[2]);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An unknown error occurred';
+                        alert('Error: ' + errorMessage);
+                        console.error('Error details:', xhr); // Log error details to the console
+                    }
+                });
+            });
+            
+            $('#reset-btn').on('click', function() {
             $.ajax({
                 type: "POST",
-                url: 'https://10.0.0.1:5000/update', // Update with your Raspberry Pi's IP
-                data: variableData,
-                cache: false,
+                url: 'https://10.0.0.1:5000/reset',  // Ensure this matches the route for resetting to default
                 success: function(response) {
                     if (response.success) {
-                        alert('Variables updated to: ' + JSON.stringify(response.new_values));
-                        $('#FirstAirPurgeRecure').val(response.new_values[0]);
-                        $('#FirstAirPurgeTon').val(response.new_values[1]);
-                        $('#FirstAirPurgeToff').val(response.new_values[2]);
+                        alert('Values reset to default: ' + JSON.stringify(response.new_values));
+                        // Update the form values with the default values returned from the backend
+                        $('#FirstAirPurgeRecure').val(response.new_values.FirstAirPurgeRecure);
+                        $('#FirstAirPurgeTon').val(response.new_values.FirstAirPurgeTon);
+                        $('#FirstAirPurgeToff').val(response.new_values.FirstAirPurgeToff);
                     }
-                },
-                error: function(xhr, status, error) {
-                    const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'An unknown error occurred';
-                    alert('Error: ' + errorMessage);
-                    console.error('Error details:', xhr); // Log error details to the console
                 }
             });
         });
-        
-        $('#reset-btn').on('click', function() {
-        $.ajax({
-            type: "POST",
-            url: 'https://10.0.0.1:5000/reset',  // Ensure this matches the route for resetting to default
-            success: function(response) {
-                if (response.success) {
-                    alert('Values reset to default: ' + JSON.stringify(response.new_values));
-                    // Update the form values with the default values returned from the backend
-                    $('#FirstAirPurgeRecure').val(response.new_values.FirstAirPurgeRecure);
-                    $('#FirstAirPurgeTon').val(response.new_values.FirstAirPurgeTon);
-                    $('#FirstAirPurgeToff').val(response.new_values.FirstAirPurgeToff);
-                }
-            }
-        });
-    });
-
-</script>
-</body>
+    </script>
+    </body>
 </html>
