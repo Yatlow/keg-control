@@ -95,7 +95,7 @@ paa purge[
 ]
 
 keg pressurize[
-	keg pressure setination=15
+	keg pressure set destination=15
 	timed out to reach keg pressure destination=12
 	adiitional pressure after time out = 15
 	pressurizing time if pressure sensors are off=35 (3500*0.01)
