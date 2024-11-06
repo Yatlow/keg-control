@@ -33,7 +33,7 @@
                     <div class="functionInputs row">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="FirstAirPurgeRecure">כמות חזרות</label>
-                            <input type="number" step="0.1" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}" placeholder="{{ settings['FirstAirPurgeRecure'] }}">
+                            <input type="number" step="0.1" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
                             <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
@@ -219,24 +219,24 @@
     <script>
         $(document).ready(function() {
                 // Initial fetch of variable values when page loads
-                    $.ajax({
-                        type: "GET",
-                        url: 'https://10.0.0.1:5000/get_initial_values', // Ensure this route is set up on the backend
-                        success: function(response) {
-                            if (response.success) {
-                                // Populate form fields with initial values
-                                alert('Variables loaded to: ' + JSON.stringify(response.new_values));
-                                $('#FirstAirPurgeRecure').val(response.initial_values.FirstAirPurgeRecure);
-                                $('#FirstAirPurgeTon').val(response.initial_values.FirstAirPurgeTon);
-                                $('#FirstAirPurgeToff').val(response.initial_values.FirstAirPurgeToff);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'Failed to load initial values';
-                            console.error('Error loading initial values:', errorMessage);
-                        }
-                    });
-                });               
+            $.ajax({
+                type: "GET",
+                url: 'https://10.0.0.1:5000/get_initial_values', // Ensure this route is set up on the backend
+                success: function(response) {
+                    if (response.success) {
+                        // Populate form fields with initial values
+                        alert('Variables loaded to: ' + JSON.stringify(response.new_values));
+                        $('#FirstAirPurgeRecure').val(response.initial_values.FirstAirPurgeRecure);
+                        $('#FirstAirPurgeTon').val(response.initial_values.FirstAirPurgeTon);
+                        $('#FirstAirPurgeToff').val(response.initial_values.FirstAirPurgeToff);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    const errorMessage = xhr.responseJSON ? xhr.responseJSON.error : 'Failed to load initial values';
+                    console.error('Error loading initial values:', errorMessage);
+                }
+            });
+        });               
         $('#control-form').on('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
 
