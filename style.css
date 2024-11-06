@@ -5,7 +5,11 @@
 html{
     height: 100%;
     box-sizing: border-box;
-    direction: rtl;
+    direction: rtl;   
+}
+.disable_scroll{
+    overflow: hidden;
+    height: 100%;
 }
 .MainBox{
     font-family: all;
@@ -70,6 +74,47 @@ html{
 }
 .ParamterBox label{
     overflow-wrap: break-word;
+}
+.hiddenBox {
+    display: none;
+}
+
+.infoBox {
+    display:inline-block;
+    position: absolute;
+    width: 40%;
+    height: 25%;
+    text-align: center;
+    right: 30%;
+    top: 30%;
+    z-index:10 ;
+    border:  #937002 3px solid;
+    background-color: #DFB725;
+    border-radius: 20px;
+}
+#conirmContent{
+    margin: 5% 0 5% 0;
+}
+#exitConfirm{
+    outline: #937002 2px solid;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px ;
+    background-color: #FFE9A4;
+    /* background-color: #E0C263; */
+}
+.SubmitionBox{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+.formBtn{
+    /* margin: auto; */
+    outline: #937002 2px solid;
+    border: none;
+    border-radius: 20px;
+    padding: 5px 15px ;
+    background-color: #DFB725;
 }
 
 @media (max-width: 1400px) {/* Medium screens */
