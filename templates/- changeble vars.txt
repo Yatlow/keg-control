@@ -79,7 +79,7 @@ paa sanitize[
 	]
 	paa pump squirt with co2[
 		recure=7
-		air and pump intervale= 1.2 (120*0.01)
+		co2 and pump intervale= 1.2 (120*0.01)
 	]
 	post squirt sanitize both kegs= 10 (1000*0.01)
 

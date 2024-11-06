@@ -32,14 +32,9 @@ CausticLastSquirtPumpOff
 PostCausticPurgeRecure
 PostCausticPurgeTon
 PostCausticPurgeToff
-
-
-
-
 postCausticWaterRinseRecure
 postCausticWaterRinseOn
 postCausticWaterRinseOf
-
 SanitizeInitialKeg1
 SanitizeInitialKeg2
 SanitizeInitialBothKegs
@@ -47,9 +42,8 @@ paaInitialPumpRecure
 paaInitialPumpOn
 paaInitialPumpOff
 paaSquirtRecure
-airPumpIntervale
+Co2PumpIntervale
 postSquirtSanitizeBothKegs
-
 co2PurgeKeg1Recure
 co2PurgeKeg1Open
 co2PurgeKeg1Closed
@@ -57,10 +51,7 @@ co2PurgeKeg2Recure
 co2PurgeKeg2Open
 co2PurgeKeg2Closed
 co2PurgeBothKegsOpen
-
 kegPdestination
 TimeOutPdestination
 PostTimeOutBuildP
 PTimeWhenSensorDisabled
-
-Recure

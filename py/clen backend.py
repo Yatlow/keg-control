@@ -152,6 +152,9 @@ def get_initial_values():
         'initial_values': initial_values
     })
     
+    
+    
+    
 @app.route('/reset', methods=['POST'])
 def reset_variables():
     try:
@@ -197,9 +200,13 @@ def update_db_value(parameter, value):
         cursor.execute(query, (value,))
         conn.commit()
         conn.close()
-        print("db updated")
     except Exception as e:
         print(f"Error updating database value for {parameter}: {str(e)}")
+        
+        # Return the updated values in the response
+        return jsonify(success=True, new_values=list(shared_values))
+
+
 
 @app.route('/test')
 def test_route():
@@ -270,6 +277,26 @@ def shutdown():
         os.system("sudo systemctl poweroff")
         shutStarted = 1
 
+def load_values_from_db():
+    try:
+        conn = sqlite3.connect('/home/raspberry/Desktop/keg_washer/settings.db')
+        cursor = conn.cursor()
+
+        # Fetch the latest values from the database
+        cursor.execute("SELECT FirstAirPurgeRecure, FirstAirPurgeTon, FirstAirPurgeToff FROM settings WHERE id = 1")
+        result = cursor.fetchone()
+
+        # If the result is not None, update shared_values
+        if result:
+            with lock:  # Lock shared_values before modifying it
+                shared_values[0] = result[0]
+                shared_values[1] = result[1]
+                shared_values[2] = result[2]
+            print(f"Loaded values from DB: {list(shared_values)}")
+        conn.close()
+    except Exception as e:
+        print(f"Error loading values from DB: {str(e)}")
+
 def main():
     global ErrNmbr
     OutputstateH= None
@@ -315,7 +342,8 @@ def boot():
     shared_values[1] = 1
     shared_values[2] = 1.5
     
-    
+    print("Boot process initialized")
+    load_values_from_db()
     
     Heatproc = Process(target=protectheat)
     Heatproc.start()
@@ -346,10 +374,6 @@ def boot():
     #####################################################B=0
     GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
     checkbtn()
-    shared_values[0] = 1
-    shared_values[1] = 1
-    shared_values[2] = 1.5
-    print("Boot process initialized")
     last_shared_values = None  # Track previous values    
     # Start system cycle thread
     prebootproc.terminate()#FOR test
@@ -371,8 +395,8 @@ def boot():
 # Run Flask app in a separate thread
 def run_flask():
     print("flask runing")
-    #app.run(host='0.0.0.0', port=5000, debug=False)
-    app.run(host='0.0.0.0', port=5000, ssl_context=('cert.pem', 'key.pem'), debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=False)
+    #app.run(host='0.0.0.0', port=5000, ssl_context=('cert.pem', 'key.pem'), debug=False)
     
 
 # Cleanup GPIO function
@@ -385,6 +409,5 @@ if __name__ == "__main__":
         boot()
     except KeyboardInterrupt:
         print("Shutting down...")
-
 
 

@@ -696,21 +696,44 @@ def Cycle(shared_values):
     global Pressurein
     global Pressureout
     GPIO.output(Outputs, GPIO.LOW)
-    # GPIO.output(InProceslight, GPIO.HIGH)
-    # GPIO.output(Main_Drain, GPIO.HIGH)
+    GPIO.output(InProceslight, GPIO.HIGH)
+    GPIO.output(Main_Drain, GPIO.HIGH)
     GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
-    while True:
+    FirstAirPurgeRecure, FirstAirPurgeTon, FirstAirPurgeToff = shared_values[0], shared_values[1], shared_values[2]
+    AirPurge(FirstAirPurgeRecure, FirstAirPurgeTon, FirstAirPurgeToff)
+    while GPIO.input(GBTN) == GPIO.LOW:
         FirstAirPurgeRecure, FirstAirPurgeTon, FirstAirPurgeToff = shared_values[0], shared_values[1], shared_values[2]
-        suming=FirstAirPurgeRecure+FirstAirPurgeTon+FirstAirPurgeToff
-        if suming<100:
-           GPIO.output(STBYlight, GPIO.HIGH) 
-        if suming>100 and suming < 1000:
-           GPIO.output(InProceslight, GPIO.HIGH) 
-        if suming<1000:
-           GPIO.output(Errlight, GPIO.HIGH)
-        print(shared_values,suming)
-        sleep(3)
-
+        AirPurge(FirstAirPurgeRecure, FirstAirPurgeTon, FirstAirPurgeToff)
+#first water rinse and purge:
+    t=0
+    while t<50:
+        sleep(0.01)
+        t=t+1
+    WaterSquirt()
+    AirPurge(5,1,2) #post initial water rinse air purge - changeble vars
+#caustic rins
+    print('Caustic rinse')
+    causticrinse() # - changeble vars
+#water rinse post caustic X3
+    GPIO.output(Main_Drain, GPIO.HIGH)
+    z= 0
+    while z<3: #post caustic watret rinse recure - changeble vars
+        print('post caustic rins #',z+1)
+        WaterSquirt()
+        AirPurge(5,1,2) #in betweein water rinse air purge - changeble vars
+        z=z+1
+#paa sanitize
+    print('Paa sanitation')
+    paasanitize() # - changeble vars
+    print('Purging keg with Co2')
+#purge With CO2
+    Co2purge() #- changeble vars
+    print('Building Pressure in keg to',Pressuroutthresh,'PSI')
+#build pressure
+    kegprssurize()#- changeble vars
+    print('sucsses!')
+    sleep(0.5)
+    Stdby()
 
 def ShortCycle():
     print('start Short Cycle')
@@ -825,8 +848,170 @@ def main():
                 if seconds<10:
                     print('{}:0{}'.format(minutes,seconds))
        
-    proc = Process(target=Cycle)
-    procind=1
+            
+    while True:
+        pushTime = 0
+        pressed = 0
+        if stop==1:
+            totaltime = (time.time() - starttime)
+            printtime=round(totaltime,2)
+            print('Stdby parameters set, program ran for')
+            converttime(printtime)
+            fillproc = Process(target=filltanks)
+            fillproc.start()
+            proc= None
+            push_req = 70
+            ErrNmbr=0
+            procind=0
+        while pushTime < push_req:#butoon examin
+            checkbtn()
+            sleep(0.01)
+            pushTime = pushTime+1
+            if Btnstatus==3 and ErrNmbr!=5:#checks if emergancy button is pressed
+                push_req=20
+                pressed=1
+            if Pause==1 and Btnstatus==2 or Pause==1 and Btnstatus==4:
+                push_req=20
+            if Btnstatus==0: #checks if no butoon is pressed
+                pushTime=0
+                stop=0
+                if proc and GPIO.input(GBTN) == GPIO.HIGH:
+                    pressed = 1
+            if proc!=None and proc.is_alive()==False:
+                stop=1
+                pushTime=push_req+1
+        if pressed ==1: #will enter this loop only if a procces is runing and triger button was reliesed or in an emergancy eror           
+            if Btnstatus==1:#green button scenarios
+                if procind==1 or procind==3: 
+                    if Pause==1: #checks if a cycle is currently Paused and green button was pressed log enogh to resume..
+                        if Pauseproc:#if Pause indicator is on, turn it off
+                            Pauseproc.terminate()
+                            Pauseproc=None
+                            Pause=0
+                        GPIO.output(Outputs, GPIO.LOW)
+                        if OutputstateH:
+                            GPIO.output(OutputstateH, GPIO.HIGH)
+                        os.kill(proc.pid, signal.SIGCONT)
+                        resumetime= time.time()
+                        pauseddurationtime=resumetime-pausedtime
+                        starttime= starttime+pauseddurationtime
+                        printtime=round(RPtime,2)
+                        print('resume','Pausduration',round(pauseddurationtime,2))
+                        converttime(printtime)
+                        push_req = 20
+                        pressed=0
+                    if Pause ==0 and pressed==1:#checks if standert cycle was trigered and not Paused
+                        if proc.is_alive()==True: #checks if cycle is active via checking standby light- for pausing
+                            x=0
+                            OutputstateH=[]
+                            while x<16:
+                                r=(Outputs[x])
+                                if GPIO.input(r) == GPIO.HIGH:
+                                    OutputstateH.append(r)
+                                x=x+1
+                            i=6
+                            if i in OutputstateH:
+                                totaltime = (time.time() - starttime)
+                                printtime=round(totaltime,2)
+                                proc.terminate()
+                                Stdby()
+                                stop=1 
+                                proc=None
+                                ErrNmbr = 0
+                                print('stop/Err reset GBTN')
+                                converttime(printtime)
+                            else:
+                                os.kill(proc.pid, signal.SIGSTOP)
+                                Pauseproc= Process(target=Pauseindicator)
+                                Pauseproc.start()
+                                pausedtime= time.time()
+                                RPtime= (time.time() - starttime)
+                                printtime=round(RPtime,2)                            
+                                print('Pause')
+                                converttime(printtime)
+                                Pause=1
+                                push_req = 70                                
+                if procind==2 or procind==4:#if another proc was trigered (emergancy eror/keg empty cycle) it will stop and return to standby
+                    if Pause==1:#if Pause indicator is on, turn it off
+                        Pauseproc.terminate()
+                        Pauseproc=None
+                        Pause=0
+                    if proc.is_alive()== True:
+                        totaltime = (time.time() - starttime)
+                        printtime=round(totaltime,2)
+                        proc.terminate()
+                        Stdby()
+                        stop=1 
+                        proc=None
+                        ErrNmbr = 0
+                        print('stop/Err reset GBTN')
+                        converttime(printtime)
+            if Btnstatus==2:#red button will stop any procces and return to standby
+                if Pause==1:#if Pause indicator is on, turn it off
+                    Pauseproc.terminate()
+                    Pauseproc=None
+                    Pause=0
+                if proc.is_alive()== True:
+                    totaltime = (time.time() - starttime)
+                    printtime=round(totaltime,2)
+                    proc.terminate()
+                    Stdby()
+                    stop=1 
+                    proc=None
+                    ErrNmbr = 0
+                    print('stop/Err reset RBTN')
+                    converttime(printtime)
+            if Btnstatus==3:#emergancy button will stop any procces and return to standby
+                if Pause==1:#if Pause indicator is on, turn it off
+                    Pauseproc.terminate()
+                    Pauseproc=None
+                    Pause=0
+                if proc:
+                    proc.terminate()
+                    totaltime = (time.time() - starttime)
+                    printtime=round(totaltime,2)
+                    print('totaltime')
+                    converttime(printtime)
+                ErrNmbr = 5
+                proc = Process(target=Err,args=(5,))
+                proc.start()
+                procind=4
+                push_req = 20
+            if Btnstatus ==4:#green & red buttons toogether will stop any procces and return to standby
+                if Pause==1:#if Pause indicator is on, turn it off
+                    Pauseproc.terminate()
+                    Pauseproc=None
+                    Pause=0
+                if proc.is_alive()== True:
+                    totaltime = (time.time() - starttime)
+                    printtime=round(totaltime,2)
+                    print('totaltime')
+                    converttime(printtime)
+                    proc.terminate()
+                    Stdby()
+                    stop=1 
+                    proc=None
+                    ErrNmbr = 0
+                    print('stop/Err reset R&GBTN')
+        if proc==None and stop ==0 and ErrNmbr==0:#if no proc is runing, and procces wasnt just aborted- will start apropriete procces
+            print('startsomthing')
+            if fillproc.is_alive()== True:
+                fillproc.terminate()
+            starttime = time.time()
+            print("Start Time: 00:00",)
+            if Btnstatus==1:
+                proc = Process(target=Cycle)
+                procind=1
+            if Btnstatus == 2:
+                proc = Process(target=purgecycle)
+                procind=2
+            if Btnstatus==4:
+                proc = Process(target=ShortCycle)
+                procind=3
+            GPIO.output(Outputs, GPIO.LOW)
+            proc.start()
+            push_req=20
+        checkbtn()
 
 def boot(shared_values):
     global ErrNmbr
@@ -851,6 +1036,246 @@ def boot(shared_values):
     print('Shutdown protection active')
     
     def preboot():
+        GPIO.output(Outputs, GPIO.LOW)
+        x=0
+        while x<3:
+            a=statuslights[x]
+            GPIO.output(statuslights, GPIO.LOW)
+            GPIO.output(a, GPIO.HIGH)
+            x=x+1
+            sleep(0.5)
+            if x==3:
+                x=0
+                GPIO.output(statuslights, GPIO.LOW)
+        if GPIO.input(pressure_cancel) == GPIO.LOW:
+            print('Launching test cycle')
+    
+    prebootproc = Process(target=preboot)
+    prebootproc.start()
+    GPIO.output(Outputs, GPIO.LOW) 
+    B=0
+    while B<1:
+        ErrNmbr=0
+        if pressed==0:
+            print('Click GTBN for test cycle')
+        if Errproc==None:
+            if pressed==1:
+                print('Click GTBN reset')
+            pressed=0
+        Boot_push_req = 5
+        Boot_pushTime = 0
+        EMRG=0
+        while Boot_pushTime < Boot_push_req:
+            sleep(0.01)
+            checkbtn()
+            if Btnstatus==0:
+                if EMRG==1:
+                    prebootproc = Process(target=preboot)
+                    prebootproc.start()
+                    EMRG=0
+            if Btnstatus==1:
+                Boot_pushTime=Boot_pushTime+1
+                GPIO.output(Errlight,GPIO.LOW)
+            else:
+                Boot_pushTime=0
+                pressed=0
+                if Errproc:
+                    pressed=1
+            if Btnstatus==3:
+                prebootproc.terminate()
+                GPIO.output(statuslights, GPIO.LOW)
+                GPIO.output(Errlight,GPIO.HIGH)
+                print('Emergancy BTN Err #5')
+                EMRG=1
+                sleep(0.5)
+            if Btnstatus==0 and prebootproc.is_alive()== True and Errproc:
+                GPIO.output(statuslights, GPIO.LOW)
+                GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                prebootproc.terminate()
+            if GPIO.input(FillCaus) == GPIO.LOW:
+                GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                GPIO.output(Water_In, GPIO.HIGH)   
+                GPIO.output(Caustic_In, GPIO.HIGH)
+            if GPIO.input(FillPaa) == GPIO.LOW:
+                GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                GPIO.output(Water_In, GPIO.HIGH)   
+                GPIO.output(Paa_In, GPIO.HIGH)
+            if GPIO.input(FillCaus) == GPIO.HIGH and GPIO.input(FillPaa) == GPIO.HIGH:
+                GPIO.output(Water_In, GPIO.LOW)
+            if GPIO.input(FillCaus) == GPIO.HIGH:
+                GPIO.output(Caustic_In, GPIO.LOW)
+            if GPIO.input(FillPaa) == GPIO.HIGH:
+                GPIO.output(Paa_In, GPIO.LOW)
+        if pressed==1:
+            Errproc.terminate()
+            prebootproc.terminate()
+            prebootproc = Process(target=preboot)
+            prebootproc.start()
+            Errproc=None
+        if Errproc==None and pressed==0 and testsucsess==0:
+            prebootproc.terminate()           
+            if GPIO.input(pressure_cancel) == GPIO.LOW:
+                global Pressurein
+                global Pressureout
+                testsucsess=0
+                print('testing water input')
+                GPIO.output(Water_In, GPIO.HIGH)
+                sleep(2)
+                if GPIO.input(pressure_cancel) == GPIO.HIGH:
+                    print('pressure check canceled')
+                    Pressurein=10000
+                if GPIO.input(pressure_cancel) == GPIO.LOW:
+                    checkpruessurecanceled()
+                if Pressurein<Pressurinthresh:
+                    ErrNmbr =2
+                    prebootproc.terminate()
+                    GPIO.output(Outputs, GPIO.LOW)
+                    GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                    GPIO.output(Errlight, GPIO.HIGH)
+                    GPIO.output(Main_Drain, GPIO.HIGH)
+                    Errproc = Process(target=Err,args=(2,))
+                    Errproc.start()
+                if ErrNmbr<1:
+                    print('testing Air input')
+                    GPIO.output(Water_In, GPIO.LOW)
+                    sleep(0.1)
+                    GPIO.output(Air_In, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(keg1, GPIO.LOW)
+                    GPIO.output(keg2, GPIO.LOW)
+                    sleep(2)
+                    if GPIO.input(pressure_cancel) == GPIO.HIGH:
+                        print('pressure check canceled')
+                        Pressurein=10000
+                    if GPIO.input(pressure_cancel) == GPIO.LOW:
+                        checkpruessurecanceled()
+                    if Pressurein<Pressurinthresh:
+                        ErrNmbr =1
+                        prebootproc.terminate()
+                        GPIO.output(Outputs, GPIO.LOW)
+                        GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                        GPIO.output(Errlight, GPIO.HIGH)
+                        Errproc = Process(target=Err,args=(1,))
+                        Errproc.start()
+                if ErrNmbr<1:
+                    print('test caustic input')
+                    GPIO.output(keg1, GPIO.HIGH)
+                    GPIO.output(keg2, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(Air_In, GPIO.LOW)
+                    sleep(0.2)
+                    GPIO.output(Water_In, GPIO.HIGH)
+                    sleep(0.5)
+                    GPIO.output(Water_In, GPIO.LOW)
+                    GPIO.output(Caustic_In, GPIO.HIGH)
+                    GPIO.output(Pump, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(keg1, GPIO.LOW)
+                    GPIO.output(keg2, GPIO.LOW)
+                    sleep(2)
+                    if GPIO.input(pressure_cancel) == GPIO.HIGH:
+                        print('pressure check canceled')
+                        Pressurein=10000
+                    if GPIO.input(pressure_cancel) == GPIO.LOW:
+                        checkpruessurecanceled()
+                    if Pressurein<Pumppressurethresh:
+                        ErrNmbr =3
+                        prebootproc.terminate()
+                        GPIO.output(Outputs, GPIO.LOW)
+                        GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                        GPIO.output(Errlight, GPIO.HIGH)
+                        Errproc = Process(target=Err,args=(3,))
+                        Errproc.start()
+                if ErrNmbr<1:
+                    print('testing Paa input ')
+                    GPIO.output(keg1, GPIO.HIGH)
+                    GPIO.output(keg2, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(Caustic_In, GPIO.LOW)
+                    GPIO.output(Pump, GPIO.LOW)
+                    GPIO.output(Water_In, GPIO.HIGH)
+                    sleep(0.5)
+                    GPIO.output(Water_In,GPIO.LOW)
+                    sleep(0.1)
+                    GPIO.output(Paa_In, GPIO.HIGH)
+                    GPIO.output(Pump, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(keg1, GPIO.LOW)
+                    GPIO.output(keg2, GPIO.LOW)
+                    sleep(2)
+                    if GPIO.input(pressure_cancel) == GPIO.HIGH:
+                        print('pressure check canceled')
+                        Pressurein=10000
+                    if GPIO.input(pressure_cancel) == GPIO.LOW:
+                        checkpruessurecanceled()
+                    if Pressurein<Pumppressurethresh:
+                        ErrNmbr =7
+                        prebootproc.terminate()
+                        GPIO.output(Outputs, GPIO.LOW)
+                        GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                        GPIO.output(Errlight, GPIO.HIGH)
+                        Errproc = Process(target=Err,args=(7,))
+                        Errproc.start()
+                if ErrNmbr<1:
+                    print('testing Co2 input')
+                    GPIO.output(keg1, GPIO.HIGH)
+                    GPIO.output(keg2, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(Paa_In, GPIO.LOW)
+                    GPIO.output(Pump, GPIO.LOW)
+                    sleep(0.1)
+                    GPIO.output(Co2_In, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(keg1, GPIO.LOW)
+                    GPIO.output(keg2, GPIO.LOW)
+                    sleep(2)
+                    if GPIO.input(pressure_cancel) == GPIO.HIGH:
+                        print('pressure check canceled')
+                        Pressurein=10000
+                    if GPIO.input(pressure_cancel) == GPIO.LOW:
+                        checkpruessurecanceled()
+                    if Pressurein<Pressuroutthresh:
+                        ErrNmbr =4
+                        prebootproc.terminate()
+                        GPIO.output(Outputs, GPIO.LOW)
+                        GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+                        GPIO.output(Errlight, GPIO.HIGH)
+                        Errproc = Process(target=Err,args=(4,))
+                        Errproc.start()
+                if ErrNmbr<1:
+                    GPIO.output(Co2_In, GPIO.LOW)
+                    GPIO.output(keg1, GPIO.HIGH)
+                    GPIO.output(keg2, GPIO.HIGH)
+                    GPIO.output(Water_In, GPIO.HIGH)
+                    sleep(2)
+                    GPIO.output(Water_In, GPIO.HIGH)
+                    sleep(4)
+                    GPIO.output(Water_In, GPIO.LOW)
+                    GPIO.output(Air_In, GPIO.HIGH)
+                    sleep(1)
+                    GPIO.output(Air_In, GPIO.HIGH)
+                    sleep(3)
+                    GPIO.output(keg1, GPIO.LOW)
+                    GPIO.output(keg2, GPIO.LOW)
+                    GPIO.output(Air_In, GPIO.LOW)
+                    GPIO.output(Main_Drain, GPIO.LOW)
+                    GPIO.output(statuslights, GPIO.LOW)
+                    testsucsess=1
+                    x=0
+            else:
+                testsucsess=1
+                x=0
+        if testsucsess==1:
+            while x<3:
+                GPIO.output(statuslights, GPIO.HIGH)
+                sleep(0.5)
+                GPIO.output(statuslights, GPIO.LOW)
+                sleep(0.5)
+                x=x+1 
+        print('boot cycle compleete')
+        B=B+1
+    GPIO.output(Ground_Pneu_valves, GPIO.HIGH)
+    checkbtn()
     main()
 
 @app.route('/')

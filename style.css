@@ -50,7 +50,7 @@ html{
     align-items: center;
     justify-content: center;
 }
-.TglBtnBox:hover{
+.functionLabel:hover{
  cursor: pointer;   
 }
 .TglBtnBox{
@@ -59,8 +59,7 @@ html{
 }
 .functionLabel img{
     height: 20px;
-    width: 25px !important;
-    background-color: none;
+    width: 25px;
 }
 .functionInputs{
     border-radius: 0 0 20px 20px;
@@ -138,6 +137,7 @@ html{
     border-radius: 20px;
     padding: 5px 15px ;
     background-color: #DFB725;
+    color: black;
 }
 
 @media (max-width: 1400px) {/* Medium screens */
