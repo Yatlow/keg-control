@@ -68,8 +68,6 @@ html{
 }
 .FNCTglHouse{
     border: 2px solid #937002;
-    width: 100px;
-    height: 40px;
     background-color: #FFE9A4;
     border-radius: 20px;
     display: flex;
@@ -88,8 +86,6 @@ html{
 }
 .FNCTglBtn{
     border: none;
-    width: 50px;
-    height: 38px;
     background-color: #D34607;
     border-radius: 20px;
 }
@@ -199,6 +195,15 @@ html{
         width: 40%;
         right: 30%;
     }
+    .FNCTglHouse{
+        width: 100px;
+        height: 40px;
+    }
+    .FNCTglBtn{
+        width: 50px;
+        height: 38px;
+    }
+    
 }
 @media (max-width: 768px) {/*small screens */
     .H1{
@@ -221,5 +226,11 @@ html{
     .infoBox {
         width: 70%;
         right: 15%;
+    }
+    .FNCTTglBox{
+        justify-content: center;
+    }
+    .FNCTglHouse{
+        margin: 10px;
     }
 }
