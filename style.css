@@ -39,6 +39,7 @@ html{
     border: solid 0.6px rgb(200, 200, 200,0.7);
     border-radius: 20px;
     margin-bottom: 30px;
+    padding: 0;
 }   
 .functionLabel{
     padding: 10px;
@@ -204,6 +205,10 @@ html{
     padding: 5px 15px ;
     background-color: #DFB725;
     color: black;
+}
+.row{
+    width: 100%;
+    margin: 0;
 }
 
 @media (max-width: 1400px) {/* Medium screens */
