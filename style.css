@@ -50,6 +50,8 @@ html{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    transition: border-radius 200ms linear;
+
 }
 .functionLabel:hover{
     cursor: pointer;   
@@ -74,9 +76,12 @@ html{
     align-items: center;
     justify-content: start;
     direction: rtl;
+    width: 100px;
+    height: 40px;
 }
 .FNCTglHouseOFF{
     direction: ltr;
+
 }
 .FNCTglHouse:hover{
     cursor: pointer;
@@ -85,8 +90,12 @@ html{
     font-size: 10px;
 }
 .FNCTglBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background-color: #D34607;
+    color: #842F00;
     border-radius: 20px;
 }
 .TglBtnBox{
@@ -96,11 +105,29 @@ html{
 .functionLabel img{
     height: 20px;
     width: 25px;
+    transition: transform 200ms linear;
+}
+.ClosedImg{
+    transform: rotate(180deg);
+    transition: transform 200ms linear;
+}
+.cloapsable{
+    max-height: max-content;
+    transition: max-height 200ms ease, padding 200ms linear;
+    overflow: hidden;
 }
 .functionInputs{
+    display: flex;
     border-radius: 0 0 20px 20px;
     padding: 10px 8px 10px 0;
     background-color: #FFE9A4;
+    max-height: max-content;
+    transition: max-height 200ms linear, padding 200ms linear;
+    overflow: hidden;
+}
+
+.fullborder{
+    border-radius: 0;
 }
 .functionLabelHiddenInput {
     border-radius: 20px;
@@ -110,11 +137,10 @@ html{
     pointer-events: none;
 }
 .functionInputsHidden{
-    display: none;
+    padding: 0;
+    max-height: 0;
 }
-.fullborder{
-    border-radius: 0;
-}
+
 .functionSubLabel{
     padding: 10px;
     padding-right: 20px;

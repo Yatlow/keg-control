@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="assets/pics/hatch_logoblack_clear_Background.png" type="image/x-icon">
 </head>
 <body id="bodyBox">
     <div class="container-fluid MainBox">
@@ -37,7 +38,7 @@
                         <div class="col-12 col-md-3 FNCTTglBox">
                             <div>|</div>
                             <div id="PrebootToggleHousing" class="FNCTglHouse">
-                                <div class="FNCTglBtn" id="PrebootToggleBtn"></div>
+                                <div class="FNCTglBtn" id="PrebootToggleBtn">|||</div>
                             </div>
                             <div>O</div>
                         </div>
@@ -48,7 +49,7 @@
                         <div class="col-12 col-md-3 FNCTTglBox">
                             <div>|</div>
                             <div id="PressureToggleHousing" class="FNCTglHouse">
-                                <div class="FNCTglBtn" id="PresuureToggleBtn"></div>
+                                <div class="FNCTglBtn" id="PresuureToggleBtn">|||</div>
                             </div>
                             <div>O</div>
                         </div>
@@ -63,15 +64,15 @@
                     <div class="functionInputs row" id="stage1">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="FirstAirPurgeRecure">כמות חזרות</label>
-                            <input type="number" step="0.1" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}">
+                            <input type="number" step="0.01" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
                             <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required value="{{ settings['FirstAirPurgeTon'] }}">
+                            <input type="number" step="0.01" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required value="{{ settings['FirstAirPurgeTon'] }}">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
                             <label for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required value="{{ settings['FirstAirPurgeToff'] }}">
+                            <input type="number" step="0.01" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required value="{{ settings['FirstAirPurgeToff'] }}">
                         </div>
                     </div>
                 </div>
@@ -81,63 +82,63 @@
                         <div class="col">שלב #2 שטיפה ראשונה במים</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl2"></div>
                     </div>
-                    <div id="stage2">
-                        <div class="functionInputs row fullborder">
+                    <div id="stage2" class="cloapsable row">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 ParamterBox">
                                 <label for="InitialWaterFlud">משך מילוי מים ראשוני בשניות</label>
-                                <input type="number" step="0.1" id="InitialWaterFlud" name="InitialWaterFlud" required value="{{ settings['InitialWaterFlud'] }}">
+                                <input type="number" step="0.01" id="InitialWaterFlud" name="InitialWaterFlud" required value="{{ settings['InitialWaterFlud'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel">התזת מים בינונית</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel">התזת מים בינונית</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureMedSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recureMedSquirt" name="recureMedSquirt" required value="{{ settings['recureMedSquirt'] }}">
+                                <input type="number" step="0.01" id="recureMedSquirt" name="recureMedSquirt" required value="{{ settings['recureMedSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="medSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="medSquirtWaterOn" name="medSquirtWaterOn" required value="{{ settings['medSquirtWaterOn'] }}">
+                                <input type="number" step="0.01" id="medSquirtWaterOn" name="medSquirtWaterOn" required value="{{ settings['medSquirtWaterOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="medSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="medSquirtWaterOff" name="medSquirtWaterOff" required value="{{ settings['medSquirtWaterOff'] }}">
+                                <input type="number" step="0.01" id="medSquirtWaterOff" name="medSquirtWaterOff" required value="{{ settings['medSquirtWaterOff'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel">התזת מים קצרה</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel">התזת מים קצרה</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureShortSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recureShortSquirt" name="recureShortSquirt" required value="{{ settings['recureShortSquirt'] }}">
+                                <input type="number" step="0.01" id="recureShortSquirt" name="recureShortSquirt" required value="{{ settings['recureShortSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="ShortSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="ShortSquirtWaterOn" name="ShortSquirtWaterOn" required value="{{ settings['ShortSquirtWaterOn'] }}">
+                                <input type="number" step="0.01" id="ShortSquirtWaterOn" name="ShortSquirtWaterOn" required value="{{ settings['ShortSquirtWaterOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="ShortSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="ShortSquirtWaterOff" name="ShortSquirtWaterOff" required value="{{ settings['ShortSquirtWaterOff'] }}">
+                                <input type="number" step="0.01" id="ShortSquirtWaterOff" name="ShortSquirtWaterOff" required value="{{ settings['ShortSquirtWaterOff'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת מים ארוכה</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">התזת מים ארוכה</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureLongSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recureLongSquirt" name="recureLongSquirt" required value="{{ settings['recureLongSquirt'] }}">
+                                <input type="number" step="0.01" id="recureLongSquirt" name="recureLongSquirt" required value="{{ settings['recureLongSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="LongSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="LongSquirtWaterOn" name="LongSquirtWaterOn" required value="{{ settings['LongSquirtWaterOn'] }}">
+                                <input type="number" step="0.01" id="LongSquirtWaterOn" name="LongSquirtWaterOn" required value="{{ settings['LongSquirtWaterOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="LongSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="LongSquirtWaterOff" name="LongSquirtWaterOff" required value="{{ settings['LongSquirtWaterOff'] }}">
+                                <input type="number" step="0.01" id="LongSquirtWaterOff" name="LongSquirtWaterOff" required value="{{ settings['LongSquirtWaterOff'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">שטיפה במים יחד עם משאבה לבניית לחץ</div>
-                        <div class="functionInputs row">
+                        <div class="functionSubLabel fullborder">שטיפה במים יחד עם משאבה לבניית לחץ</div>
+                        <div class="functionInputs">
                             <div class="col-12 ParamterBox">
                                 <label for="RinseWaterWithPump">משך שטיפה במים עם משאבה לבניית לחץ</label>
-                                <input type="number" step="0.1" id="RinseWaterWithPump" name="RinseWaterWithPump" required value="{{ settings['RinseWaterWithPump'] }}">
+                                <input type="number" step="0.01" id="RinseWaterWithPump" name="RinseWaterWithPump" required value="{{ settings['RinseWaterWithPump'] }}">
                             </div>
                         </div>
                     </div>
@@ -148,19 +149,19 @@
                         <div class="col">שלב #3 דחיקת מים לאחר שטיפה ראשונה החוצה עם אוויר</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl3"></div>
                     </div>
-                    <div id="stage3">
-                        <div class="functionInputs row">
+                    <div id="stage3" class="cloapsable row">
+                        <div class="functionInputs">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="PostWaterPurgeRecure">כמות חזרות</label>
-                                <input type="number" step="0.1" id="PostWaterPurgeRecure" name="PostWaterPurgeRecure" required value="{{ settings['PostWaterPurgeRecure'] }}">
+                                <input type="number" step="0.01" id="PostWaterPurgeRecure" name="PostWaterPurgeRecure" required value="{{ settings['PostWaterPurgeRecure'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="PostWaterPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="PostWaterPurgeTon" name="PostWaterPurgeTon" required value="{{ settings['PostWaterPurgeTon'] }}">
+                                <input type="number" step="0.01" id="PostWaterPurgeTon" name="PostWaterPurgeTon" required value="{{ settings['PostWaterPurgeTon'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="PostWaterPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="PostWaterPurgeToff" name="PostWaterPurgeToff" required value="{{ settings['PostWaterPurgeToff'] }}">
+                                <input type="number" step="0.01" id="PostWaterPurgeToff" name="PostWaterPurgeToff" required value="{{ settings['PostWaterPurgeToff'] }}">
                             </div>
                         </div>
                     </div>
@@ -171,79 +172,79 @@
                         <div class="col">שלב #4 ניקוי בסודה קאוסטיק</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl4"></div>
                     </div>
-                    <div id="stage4">
-                        <div class="functionInputs row fullborder">
+                    <div id="stage4" class="cloapsable row">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 ParamterBox">
                                 <label for="InitialCausticFlud">משך מילוי סודה קאוסטיק ראשוני- ל2 החביות בשניות</label>
-                                <input type="number" step="0.1" id="InitialCausticFlud" name="InitialCausticFlud" required value="{{ settings['InitialCausticFlud'] }}">
+                                <input type="number" step="0.01" id="InitialCausticFlud" name="InitialCausticFlud" required value="{{ settings['InitialCausticFlud'] }}">
                             </div>
                         </div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="CausticRinseKeg1">משך רחיצה קאוסטיק חבית ימין בשניות</label>
-                                <input type="number" step="0.1" id="CausticRinseKeg1" name="CausticRinseKeg1" required value="{{ settings['CausticRinseKeg1'] }}">
+                                <input type="number" step="0.01" id="CausticRinseKeg1" name="CausticRinseKeg1" required value="{{ settings['CausticRinseKeg1'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="CausticRinseKeg2">משך רחיצה קאוסטיק חבית שמאל בשניות</label>
-                                <input type="number" step="0.1" id="CausticRinseKeg2" name="CausticRinseKeg2" required value="{{ settings['CausticRinseKeg2'] }}">
+                                <input type="number" step="0.01" id="CausticRinseKeg2" name="CausticRinseKeg2" required value="{{ settings['CausticRinseKeg2'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel">כניסת קאוסטיק לחבית ללא יציאת הקאוסטיק לבניית לחץ</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel">כניסת קאוסטיק לחבית ללא יציאת הקאוסטיק לבניית לחץ</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="pressurizeCausticInKeg">משך דחיסת הקאוסטיק לחבית בשניות</label>
-                                <input type="number" step="0.1" id="pressurizeCausticInKeg" name="pressurizeCausticInKeg" required value="{{ settings['pressurizeCausticInKeg'] }}">
+                                <input type="number" step="0.01" id="pressurizeCausticInKeg" name="pressurizeCausticInKeg" required value="{{ settings['pressurizeCausticInKeg'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="causticSoakInKeg">משך השריית קאוסטיק בחבית בלחץ בשניות</label>
-                                <input type="number" step="0.1" id="causticSoakInKeg" name="causticSoakInKeg" required value="{{ settings['causticSoakInKeg'] }}">
+                                <input type="number" step="0.01" id="causticSoakInKeg" name="causticSoakInKeg" required value="{{ settings['causticSoakInKeg'] }}">
                             </div>
                         </div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 ParamterBox">
                                 <label for="SecondCausticFlud">משך מילוי סודה קאוסטיק שני- ל2 החביות בשניות</label>
-                                <input type="number" step="0.1" id="SecondCausticFlud" name="SecondCausticFlud" required value="{{ settings['SecondCausticFlud'] }}">
+                                <input type="number" step="0.01" id="SecondCausticFlud" name="SecondCausticFlud" required value="{{ settings['SecondCausticFlud'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת קאוסטיק קצרה</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">התזת קאוסטיק קצרה</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureShortCausticSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recureShortCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
+                                <input type="number" step="0.01" id="recureShortCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="CausticSquirtPumpOn">משך הפעלת משאבה בשניות</label>
-                                <input type="number" step="0.1" id="CausticSquirtPumpOn" name="CausticSquirtPumpOn" required value="{{ settings['CausticSquirtPumpOn'] }}">
+                                <input type="number" step="0.01" id="CausticSquirtPumpOn" name="CausticSquirtPumpOn" required value="{{ settings['CausticSquirtPumpOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="CausticSquirtPumpOff">משך כיבוי משאבה בשניות</label>
-                                <input type="number" step="0.1" id="CausticSquirtPumpOff" name="CausticSquirtPumpOff" required value="{{ settings['CausticSquirtPumpOff'] }}">
+                                <input type="number" step="0.01" id="CausticSquirtPumpOff" name="CausticSquirtPumpOff" required value="{{ settings['CausticSquirtPumpOff'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת קאוסטיק בשילוב אוויר</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">התזת קאוסטיק בשילוב אוויר</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="recurePurgeCausticSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recurePurgeCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
+                                <input type="number" step="0.01" id="recurePurgeCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="airAndPumpIntervale">אינטרוול אוויר ומשאבה בשניות</label>
-                                <input type="number" step="0.1" id="airAndPumpIntervale" name="airAndPumpIntervale" required value="{{ settings['airAndPumpIntervale'] }}">
+                                <input type="number" step="0.01" id="airAndPumpIntervale" name="airAndPumpIntervale" required value="{{ settings['airAndPumpIntervale'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת קאוסטיק ארוכה- לאחר התזה בשילוב אוויר</div>
-                        <div class="functionInputs row">
+                        <div class="functionSubLabel fullborder">התזת קאוסטיק ארוכה- לאחר התזה בשילוב אוויר</div>
+                        <div class="functionInputs">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureLastCausticSquirt">כמות חזרות</label>
-                                <input type="number" step="0.1" id="recureLastCausticSquirt" name="recureLastCausticSquirt" required value="{{ settings['recureLastCausticSquirt'] }}">
+                                <input type="number" step="0.01" id="recureLastCausticSquirt" name="recureLastCausticSquirt" required value="{{ settings['recureLastCausticSquirt'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="CausticLastSquirtPumpOn">משך הפעלת משאבה בשניות</label>
-                                <input type="number" step="0.1" id="CausticLastSquirtPumpOn" name="CausticLastSquirtPumpOn" required value="{{ settings['CausticLastSquirtPumpOn'] }}">
+                                <input type="number" step="0.01" id="CausticLastSquirtPumpOn" name="CausticLastSquirtPumpOn" required value="{{ settings['CausticLastSquirtPumpOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="CausticLastSquirtPumpOff">משך כיבוי משאבה בשניות</label>
-                                <input type="number" step="0.1" id="CausticLastSquirtPumpOff" name="CausticLastSquirtPumpOff" required value="{{ settings['CausticLastSquirtPumpOff'] }}">
+                                <input type="number" step="0.01" id="CausticLastSquirtPumpOff" name="CausticLastSquirtPumpOff" required value="{{ settings['CausticLastSquirtPumpOff'] }}">
                             </div>
                         </div>
                     </div>
@@ -257,15 +258,15 @@
                     <div class="functionInputs row" id="stage5">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="PostCausticPurgeRecure">כמות חזרות</label>
-                            <input type="number" step="0.1" id="PostCausticPurgeRecure" name="PostCausticPurgeRecure" required value="{{ settings['PostCausticPurgeRecure'] }}">
+                            <input type="number" step="0.01" id="PostCausticPurgeRecure" name="PostCausticPurgeRecure" required value="{{ settings['PostCausticPurgeRecure'] }}">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
                             <label for="PostCausticPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="PostCausticPurgeTon" name="PostCausticPurgeTon" required value="{{ settings['PostCausticPurgeTon'] }}">
+                            <input type="number" step="0.01" id="PostCausticPurgeTon" name="PostCausticPurgeTon" required value="{{ settings['PostCausticPurgeTon'] }}">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
                             <label for="PostCausticPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="PostCausticPurgeToff" name="PostCausticPurgeToff" required value="{{ settings['PostCausticPurgeToff'] }}">
+                            <input type="number" step="0.01" id="PostCausticPurgeToff" name="PostCausticPurgeToff" required value="{{ settings['PostCausticPurgeToff'] }}">
                         </div>
                     </div>
                 </div>
@@ -278,15 +279,15 @@
                     <div class="functionInputs row" id="stage6">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="postCausticWaterRinseRecure">כמות חזרות</label>
-                            <input type="number" step="0.1" id="postCausticWaterRinseRecure" name="postCausticWaterRinseRecure" required value="{{ settings['postCausticWaterRinseRecure'] }}">
+                            <input type="number" step="0.01" id="postCausticWaterRinseRecure" name="postCausticWaterRinseRecure" required value="{{ settings['postCausticWaterRinseRecure'] }}">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
                             <label for="postCausticWaterRinseOn">משך כניסת מים בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="postCausticWaterRinseOn" name="postCausticWaterRinseOn" required value="{{ settings['postCausticWaterRinseOn'] }}">
+                            <input type="number" step="0.01" id="postCausticWaterRinseOn" name="postCausticWaterRinseOn" required value="{{ settings['postCausticWaterRinseOn'] }}">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
                             <label for="postCausticWaterRinseOf">משך ניקוז ללא מים בכל חזרה בשניות</label>
-                            <input type="number" step="0.1" id="postCausticWaterRinseOf" name="postCausticWaterRinseOf" required value="{{ settings['postCausticWaterRinseOf'] }}">
+                            <input type="number" step="0.01" id="postCausticWaterRinseOf" name="postCausticWaterRinseOf" required value="{{ settings['postCausticWaterRinseOf'] }}">
                         </div>
                     </div>
                 </div>
@@ -296,54 +297,54 @@
                         <div class="col">שלב #7 חיטוי בחומצה פראצטית</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl7"></div>
                     </div>
-                    <div id="stage7">
-                        <div class="functionInputs row fullborder">
+                    <div id="stage7" class="cloapsable row">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="SanitizeInitialKeg1">משך חיטוי פראצטית חבית ימין בשניות</label>
-                                <input type="number" step="0.1" id="SanitizeInitialKeg1" name="SanitizeInitialKeg1" required value="{{ settings['SanitizeInitialKeg1'] }}">
+                                <input type="number" step="0.01" id="SanitizeInitialKeg1" name="SanitizeInitialKeg1" required value="{{ settings['SanitizeInitialKeg1'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="SanitizeInitialKeg2">משך חיטוי פראצטית חבית שמאל בשניות</label>
-                                <input type="number" step="0.1" id="SanitizeInitialKeg2" name="SanitizeInitialKeg2" required value="{{ settings['SanitizeInitialKeg2'] }}">
+                                <input type="number" step="0.01" id="SanitizeInitialKeg2" name="SanitizeInitialKeg2" required value="{{ settings['SanitizeInitialKeg2'] }}">
                             </div>
                         </div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 ParamterBox">
                                 <label for="SanitizeInitialBothKegs">משך חיטוי פראצטית ל2 החביות בשניות</label>
-                                <input type="number" step="0.1" id="SanitizeInitialBothKegs" name="SanitizeInitialBothKegs" required value="{{ settings['SanitizeInitialBothKegs'] }}">
+                                <input type="number" step="0.01" id="SanitizeInitialBothKegs" name="SanitizeInitialBothKegs" required value="{{ settings['SanitizeInitialBothKegs'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת פראצטית ראשונה</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">התזת פראצטית ראשונה</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="paaInitialPumpRecure">כמות חזרות</label>
-                                <input type="number" step="0.1" id="paaInitialPumpRecure" name="paaInitialPumpRecure" required value="{{ settings['paaInitialPumpRecure'] }}">
+                                <input type="number" step="0.01" id="paaInitialPumpRecure" name="paaInitialPumpRecure" required value="{{ settings['paaInitialPumpRecure'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="paaInitialPumpOn">משך הפעלת משאבה בשניות</label>
-                                <input type="number" step="0.1" id="paaInitialPumpOn" name="paaInitialPumpOn" required value="{{ settings['paaInitialPumpOn'] }}">
+                                <input type="number" step="0.01" id="paaInitialPumpOn" name="paaInitialPumpOn" required value="{{ settings['paaInitialPumpOn'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="paaInitialPumpOff">משך כיבוי משאבה בשניות</label>
-                                <input type="number" step="0.1" id="paaInitialPumpOff" name="paaInitialPumpOff" required value="{{ settings['paaInitialPumpOff'] }}">
+                                <input type="number" step="0.01" id="paaInitialPumpOff" name="paaInitialPumpOff" required value="{{ settings['paaInitialPumpOff'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">התזת פראצטית בשילוב CO2</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">התזת פראצטית בשילוב CO2</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="paaSquirtRecure">כמות חזרות</label>
-                                <input type="number" step="0.1" id="paaSquirtRecure" name="paaSquirtRecure" required value="{{ settings['paaSquirtRecure'] }}">
+                                <input type="number" step="0.01" id="paaSquirtRecure" name="paaSquirtRecure" required value="{{ settings['paaSquirtRecure'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="Co2PumpIntervale">אינטרוול CO2 ומשאבה בשניות</label>
-                                <input type="number" step="0.1" id="Co2PumpIntervale" name="Co2PumpIntervale" required value="{{ settings['Co2PumpIntervale'] }}">
+                                <input type="number" step="0.01" id="Co2PumpIntervale" name="Co2PumpIntervale" required value="{{ settings['Co2PumpIntervale'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">חיטוי בחומצה פראצטית ארוך לשני החביות- לאחר התזה בשילוב CO2</div>
-                        <div class="functionInputs row">
+                        <div class="functionSubLabel fullborder">חיטוי בחומצה פראצטית ארוך לשני החביות- לאחר התזה בשילוב CO2</div>
+                        <div class="functionInputs">
                             <div class="col-12 ParamterBox">
                                 <label for="postSquirtSanitizeBothKegs">משך חיטוי בחומצה פראצטית ארוך לשני החביות</label>
-                                <input type="number" step="0.1" id="postSquirtSanitizeBothKegs" name="postSquirtSanitizeBothKegs" required value="{{ settings['postSquirtSanitizeBothKegs'] }}">
+                                <input type="number" step="0.01" id="postSquirtSanitizeBothKegs" name="postSquirtSanitizeBothKegs" required value="{{ settings['postSquirtSanitizeBothKegs'] }}">
                             </div>
                         </div>
                     </div>
@@ -354,42 +355,42 @@
                         <div class="col">שלב #8 דחיקת חומצה פראצטית החוצה עם CO2</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl8"></div>
                     </div>
-                    <div id="stage8">
-                        <div class="row functionSubLabel fullborder">חבית ימין</div>
-                        <div class="functionInputs row fullborder">
+                    <div id="stage8" class="cloapsable row">
+                        <div class="functionSubLabel fullborder">חבית ימין</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="co2PurgeKeg1Recure">כמות חזרות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg1Recure" name="co2PurgeKeg1Recure" required value="{{ settings['co2PurgeKeg1Recure'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg1Recure" name="co2PurgeKeg1Recure" required value="{{ settings['co2PurgeKeg1Recure'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="co2PurgeKeg1Open">משך כניסת CO2 בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg1Open" name="co2PurgeKeg1Open" required value="{{ settings['co2PurgeKeg1Open'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg1Open" name="co2PurgeKeg1Open" required value="{{ settings['co2PurgeKeg1Open'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="co2PurgeKeg1Closed">משך ניקוז ללא CO2 בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg1Closed" name="co2PurgeKeg1Closed" required value="{{ settings['co2PurgeKeg1Closed'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg1Closed" name="co2PurgeKeg1Closed" required value="{{ settings['co2PurgeKeg1Closed'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">חבית שמאל</div>
-                        <div class="functionInputs row fullborder">
+                        <div class="functionSubLabel fullborder">חבית שמאל</div>
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="co2PurgeKeg2Recure">כמות חזרות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg2Recure" name="co2PurgeKeg2Recure" required value="{{ settings['co2PurgeKeg2Recure'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg2Recure" name="co2PurgeKeg2Recure" required value="{{ settings['co2PurgeKeg2Recure'] }}">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
                                 <label for="co2PurgeKeg2Open">משך כניסת CO2 בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg2Open" name="co2PurgeKeg2Open" required value="{{ settings['co2PurgeKeg2Open'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg2Open" name="co2PurgeKeg2Open" required value="{{ settings['co2PurgeKeg2Open'] }}">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
                                 <label for="co2PurgeKeg2Closed">משך ניקוז ללא CO2 בכל חזרה בשניות</label>
-                                <input type="number" step="0.1" id="co2PurgeKeg2Closed" name="co2PurgeKeg2Closed" required value="{{ settings['co2PurgeKeg2Closed'] }}">
+                                <input type="number" step="0.01" id="co2PurgeKeg2Closed" name="co2PurgeKeg2Closed" required value="{{ settings['co2PurgeKeg2Closed'] }}">
                             </div>
                         </div>
-                        <div class="row functionSubLabel fullborder">חבית ימין ושמאל יחד</div>
-                            <div class="functionInputs row">
+                        <div class="functionSubLabel fullborder">חבית ימין ושמאל יחד</div>
+                            <div class="functionInputs">
                                 <div class="col-12 ParamterBox">
                                 <label for="co2PurgeBothKegsOpen">משך דחיקת חומצה פראצטית החוצה עם CO2 ל 2 החביות</label>
-                                <input type="number" step="0.1" id="co2PurgeBothKegsOpen" name="co2PurgeBothKegsOpen" required value="{{ settings['co2PurgeBothKegsOpen'] }}">
+                                <input type="number" step="0.01" id="co2PurgeBothKegsOpen" name="co2PurgeBothKegsOpen" required value="{{ settings['co2PurgeBothKegsOpen'] }}">
                             </div>
                         </div>
                     </div>
@@ -400,25 +401,25 @@
                         <div class="col">שלב #9 בניית לחץ בחבית עם CO2</div>
                         <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl9"></div>
                     </div>
-                    <div id="stage9">
-                        <div class="functionInputs row fullborder">
+                    <div id="stage9" class="cloapsable row">
+                        <div class="functionInputs fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="kegPdestination">לחץ יעד ב PSI</label>
-                                <input type="number" disabled step="0.1" id="kegPdestination" name="kegPdestination" required value="{{ settings['kegPdestination'] }}">
+                                <input type="number" disabled step="0.01" id="kegPdestination" name="kegPdestination" required value="{{ settings['kegPdestination'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="TimeOutPdestination">משך המתנה להגעה ליעד</label>
-                                <input type="number" disabled step="0.1" id="TimeOutPdestination" name="TimeOutPdestination" required value="{{ settings['TimeOutPdestination'] }}">
+                                <input type="number" disabled step="0.01" id="TimeOutPdestination" name="TimeOutPdestination" required value="{{ settings['TimeOutPdestination'] }}">
                             </div>
                         </div>
-                        <div class="functionInputs row">
+                        <div class="functionInputs">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="PostTimeOutBuildP">משך בניית לחץ לאחר המתנה במידה ולא הגיע ללחץ יעד</label>
-                                <input type="number" disabled step="0.1" id="PostTimeOutBuildP" name="PostTimeOutBuildP" required value="{{ settings['PostTimeOutBuildP'] }}">
+                                <input type="number" disabled step="0.01" id="PostTimeOutBuildP" name="PostTimeOutBuildP" required value="{{ settings['PostTimeOutBuildP'] }}">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="PTimeWhenSensorDisabled">משך בניית לחץ במידה ומתג חיישני לחץ כבוי</label>
-                                <input type="number" step="0.1" id="PTimeWhenSensorDisabled" name="PTimeWhenSensorDisabled" required value="{{ settings['PTimeWhenSensorDisabled'] }}">
+                                <input type="number" step="0.01" id="PTimeWhenSensorDisabled" name="PTimeWhenSensorDisabled" required value="{{ settings['PTimeWhenSensorDisabled'] }}">
                             </div>
                         </div>
                     </div>
@@ -442,7 +443,7 @@
 
     <script>
         const attributes = [
-    "FirstAirPurgeRecure", "FirstAirPurgeTon", "FirstAirPurgeToff", "InitialWaterFlud",
+    "preboobotMeteg","pressureMeteg","FirstAirPurgeRecure", "FirstAirPurgeTon", "FirstAirPurgeToff", "InitialWaterFlud",
     "recureMedSquirt", "medSquirtWaterOn", "medSquirtWaterOff", "recureShortSquirt", 
     "ShortSquirtWaterOn", "ShortSquirtWaterOff", "recureLongSquirt", "LongSquirtWaterOn", 
     "LongSquirtWaterOff", "RinseWaterWithPump", "PostWaterPurgeRecure", "PostWaterPurgeTon", 
@@ -465,9 +466,9 @@
         ]
 
         const LabelList = [
-        "label1",
         "PrebootToggleHousing",
         "PressureToggleHousing",
+        "label1",
         "label2",
         "label3",
         "label4",
@@ -499,31 +500,31 @@
             });
         }
 
-        let preboobot= 1
-        let pressure= 1
-        
-        $('#PrebootToggleHousing').on('click',function(){
-            let FNCTglBtn = document.getElementById("PrebootToggleHousing");
-            if (preboobot== 1){
+        let preboobotMeteg = 1;
+        let pressureMeteg = 1;
+
+        function toggleMeteg(MetegId, MetegVal, MetegVar) {
+            console.log(MetegId)
+            let FNCTglBtn = document.getElementById(MetegId);
+            if (MetegVal == 1) {
                 FNCTglBtn.classList.add("FNCTglHouseOFF");
-                preboobot=0
-            }
-            else if (preboobot== 0){
+                MetegVar = 0;  // Change the passed MetegVar directly
+                console.log("On");
+            } else if (MetegVal == 0) {
                 FNCTglBtn.classList.remove("FNCTglHouseOFF");
-                preboobot=1
+                MetegVar = 1;  // Change the passed MetegVar directly
+                console.log("OFF");
             }
-        })
-        $('#PressureToggleHousing').on('click',function(){
-            let FNCTglBtn = document.getElementById("PressureToggleHousing");
-            if (pressure== 1){
-                FNCTglBtn.classList.add("FNCTglHouseOFF");
-                pressure=0
-            }
-            else if (pressure== 0){
-                FNCTglBtn.classList.remove("FNCTglHouseOFF");
-                pressure=1
-            }
-        })
+            return MetegVar;  // Return the modified value
+        }
+
+        $('#PrebootToggleHousing').on('click', function () {
+            preboobotMeteg = toggleMeteg("PrebootToggleHousing", preboobotMeteg, preboobotMeteg);
+        });
+
+        $('#PressureToggleHousing').on('click', function () {
+            pressureMeteg = toggleMeteg("PressureToggleHousing", pressureMeteg, pressureMeteg);
+        });
 
         $(document).ready(function() {
                 // Initial fetch of variable values when page loads
@@ -536,19 +537,38 @@
                         inner.innerHTML = 'נתונים נטענו בהצלחה מהשרת!';
                         DisableItems()
                         // Populate form fields with initial values
-                        // $('#FirstAirPurgeRecure').val(response.initial_values.FirstAirPurgeRecure);
-                        // $('#FirstAirPurgeTon').val(response.initial_values.FirstAirPurgeTon);
-                        // $('#FirstAirPurgeToff').val(response.initial_values.FirstAirPurgeToff);
                         attributes.forEach(attribute => {
                         // Check if the attribute exists in the response object
                         if (response.initial_values.hasOwnProperty(attribute)) {
                         // Set the value of the form field using jQuery
                         $('#' + attribute).val(response.initial_values[attribute]);
-                        }
+                        if (attribute === "preboobotMeteg" || attribute === "pressureMeteg") {
+                            let StartMetegId= 0;
+                            if (attribute === "preboobotMeteg"){
+                                StartMetegId="PrebootToggleHousing";
+                                if (response.initial_values[attribute]==1){
+                                    preboobotMeteg = 1;
+                                }
+                                else if (response.initial_values[attribute]==0){     
+                                    preboobotMeteg = 0;
+                                }
+                                preboobotMeteg = toggleMeteg(StartMetegId, preboobotMeteg , preboobotMeteg);
+                            }
+                            else if (attribute === "pressureMeteg"){
+                                StartMetegId="PressureToggleHousing";
+                                if (response.initial_values[attribute]==1){
+                                    pressureMeteg = 1;
+                                }
+                                else if (response.initial_values[attribute]==0){     
+                                    pressureMeteg = 0;
+                                }
+                                pressureMeteg = toggleMeteg(StartMetegId, pressureMeteg , pressureMeteg);
+                            }
+                            }
+                            }
                         });
-                        // $('#').val(response.initial_values.);
-                    }
-                },
+                        }
+                    },
                 error: function(xhr, status, error) {
                     var inner = document.getElementById("conirmContent");
                     inner.innerHTML = 'תקלה בתקשורת לשרת!';
@@ -656,9 +676,9 @@
                         // $('#').val(response.new_values.);
                         attributes.forEach(attribute => {
                         // Check if the attribute exists in the response object
-                        if (response.initial_values.hasOwnProperty(attribute)) {
+                        if (response.new_values.hasOwnProperty(attribute)) {
                         // Set the value of the form field using jQuery
-                        $('#' + attribute).val(response.initial_values[attribute]);
+                        $('#' + attribute).val(response.new_values[attribute]);
                         }
                         });
                         
@@ -667,32 +687,35 @@
             });
         });
         
-        function toggleStage(labelId, stageId) {
+        function toggleStage(labelId, stageId,ImgId) {
             let clicked = false;
             document.getElementById(labelId).addEventListener("click", function(event) {
                 let functionInputs = document.getElementById(stageId);
                 let functionLabel = document.getElementById(labelId);
+                let functionImg = document.getElementById(ImgId);
                 if (!clicked) {
                     functionInputs.classList.add("functionInputsHidden");
                     functionLabel.classList.add("functionLabelHiddenInput");
+                    functionImg.classList.add("ClosedImg")
                     clicked = true;
                 } else {
                     functionInputs.classList.remove("functionInputsHidden");
                     functionLabel.classList.remove("functionLabelHiddenInput");
+                    functionImg.classList.remove("ClosedImg")
                     clicked = false;
                 }
             });
         }
 
-        toggleStage("label1", "stage1");
-        toggleStage("label2", "stage2");
-        toggleStage("label3", "stage3");
-        toggleStage("label4", "stage4");
-        toggleStage("label5", "stage5");
-        toggleStage("label6", "stage6");
-        toggleStage("label7", "stage7");
-        toggleStage("label8", "stage8");
-        toggleStage("label9", "stage9");
+        toggleStage("label1", "stage1","Tgl1");
+        toggleStage("label2", "stage2","Tgl2");
+        toggleStage("label3", "stage3","Tgl3");
+        toggleStage("label4", "stage4","Tgl4");
+        toggleStage("label5", "stage5","Tgl5");
+        toggleStage("label6", "stage6","Tgl6");
+        toggleStage("label7", "stage7","Tgl7");
+        toggleStage("label8", "stage8","Tgl8");
+        toggleStage("label9", "stage9","Tgl9");
 
     </script>
     </body>
