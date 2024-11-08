@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פרמטרים למערכת חביות</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="assets/pics/hatch_logoblack_clear_Background.png" type="image/x-icon">
+    <title>Keg washer Control</title>
+    <script src="./Keg washer Control_files/jquery-3.6.0.min.js.download"></script>
+    <link href="./Keg washer Control_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Keg washer Control_files/style.css">
+    <link rel="shortcut icon" href="./Keg washer Control_files/hatch_logoblack_clear_Background.png" type="image/x-icon">
 </head>
-<body id="bodyBox">
+<body id="bodyBox" class="" data-new-gr-c-s-check-loaded="14.1205.0" data-gr-ext-installed="">
     <div class="container-fluid MainBox">
         <div class="headBox row">
             <div class="d-none d-md-block col-md-1"></div>
@@ -17,17 +17,17 @@
                 <div class="H1">עדכון פרמטרים במשטף חביות</div>
             </div>
             <div class="col-12 col-md-3">
-                <img  class="logo img-fluid" src="assets/pics/hatch_logoblack_clear_Background.png">
+                <img class="logo img-fluid" src="./Keg washer Control_files/hatch_logoblack_clear_Background.png">
             </div> 
             <div class="col-12 col-md-2 HeadinfoBox">
                 <div class="Headinfo">עדכון אחרון 06/11/24 11:06PM</div>
                 <div class="Headinfo">V 5.1.4</div>
-                <div class="Headinfo">&copy; ישראל אטלו</div>
+                <div class="Headinfo">© ישראל אטלו</div>
             </div> 
             <div class="d-none d-md-block col-md-1"></div>
         </div>
      
-        <form id="control-form" method="POST" >
+        <form id="control-form" method="POST">
             <div class="formBox">
                 <div class="SubmitionBox" id="top submit">
                     <button type="submit" id="send" class="formBtn">עדכן נתונים</button>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-12 col-md-3 FNCTTglBox">
                             <div>|</div>
-                            <div id="PrebootToggleHousing" class="FNCTglHouse">
+                            <div id="PrebootToggleHousing" class="FNCTglHouse FNCTglHouseOFF">
                                 <div class="FNCTglBtn" id="PrebootToggleBtn">|||</div>
                             </div>
                             <div>O</div>
@@ -64,24 +64,20 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label1">
                         <div class="col">שלב #1 דחיקת בירה החוצה עם אוויר</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl1"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl1"></div>
                     </div>
                     <div class="functionInputs row row" id="stage1">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="FirstAirPurgeRecure">כמות חזרות</label>
-                            <input type="number" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required value="{{ settings['FirstAirPurgeRecure'] }}">
-                            <label class="valType">פעמים</label>
+                            <input type="number" step="0.01" id="FirstAirPurgeRecure" name="FirstAirPurgeRecure" required="" value="{{ settings[&#39;FirstAirPurgeRecure&#39;] }}" fdprocessedid="tpbnwh">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
-                            <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה</label>
-                            <input type="number" step="0.01" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required value="{{ settings['FirstAirPurgeTon'] }}">
-                            <label class="valType">שניות</label>
+                            <label for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="FirstAirPurgeTon" name="FirstAirPurgeTon" required="" value="{{ settings[&#39;FirstAirPurgeTon&#39;] }}" fdprocessedid="cio4vm">
                         </div>
-                        <div class="col-12 col-md-4 ParamterBox">
-                            <label for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה</label>
-                            <input type="number" step="0.01" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required value="{{ settings['FirstAirPurgeToff'] }}">
-                            <label class="valType">שניות</label>
-                            <!-- <label class="valType"></label> -->
+                        <div class="col-12 col-md-5 ParamterBox">
+                            <label for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="FirstAirPurgeToff" name="FirstAirPurgeToff" required="" value="{{ settings[&#39;FirstAirPurgeToff&#39;] }}" fdprocessedid="nrkqjc">
                         </div>
                     </div>
                 </div>
@@ -89,76 +85,65 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label2">
                         <div class="col">שלב #2 שטיפה ראשונה במים</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl2"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl2"></div>
                     </div>
                     <div id="stage2" class="cloapsable row">
                         <div class="functionInputs row fullborder">
                             <div class="col-12 ParamterBox">
-                                <label for="InitialWaterFlud">משך מילוי מים ראשוני</label>
-                                <input type="number" step="0.01" id="InitialWaterFlud" name="InitialWaterFlud" required value="{{ settings['InitialWaterFlud'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="InitialWaterFlud">משך מילוי מים ראשוני בשניות</label>
+                                <input type="number" step="0.01" id="InitialWaterFlud" name="InitialWaterFlud" required="" value="{{ settings[&#39;InitialWaterFlud&#39;] }}" fdprocessedid="lhnyar">
                             </div>
                         </div>
                         <div class="functionSubLabel">התזת מים בינונית</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureMedSquirt">כמות חזרות</label>
-                                <input type="number" id="recureMedSquirt" name="recureMedSquirt" required value="{{ settings['recureMedSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recureMedSquirt" name="recureMedSquirt" required="" value="{{ settings[&#39;recureMedSquirt&#39;] }}" fdprocessedid="jcncdt">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="medSquirtWaterOn">משך כניסת מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="medSquirtWaterOn" name="medSquirtWaterOn" required value="{{ settings['medSquirtWaterOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="medSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="medSquirtWaterOn" name="medSquirtWaterOn" required="" value="{{ settings[&#39;medSquirtWaterOn&#39;] }}" fdprocessedid="34it59">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="medSquirtWaterOff">משך ניקוז ללא מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="medSquirtWaterOff" name="medSquirtWaterOff" required value="{{ settings['medSquirtWaterOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="medSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="medSquirtWaterOff" name="medSquirtWaterOff" required="" value="{{ settings[&#39;medSquirtWaterOff&#39;] }}" fdprocessedid="rnb94">
                             </div>
                         </div>
                         <div class="functionSubLabel">התזת מים קצרה</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureShortSquirt">כמות חזרות</label>
-                                <input type="number" id="recureShortSquirt" name="recureShortSquirt" required value="{{ settings['recureShortSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recureShortSquirt" name="recureShortSquirt" required="" value="{{ settings[&#39;recureShortSquirt&#39;] }}" fdprocessedid="4tm9a">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="ShortSquirtWaterOn">משך כניסת מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="ShortSquirtWaterOn" name="ShortSquirtWaterOn" required value="{{ settings['ShortSquirtWaterOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="ShortSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="ShortSquirtWaterOn" name="ShortSquirtWaterOn" required="" value="{{ settings[&#39;ShortSquirtWaterOn&#39;] }}" fdprocessedid="9trwwc">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="ShortSquirtWaterOff">משך ניקוז ללא מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="ShortSquirtWaterOff" name="ShortSquirtWaterOff" required value="{{ settings['ShortSquirtWaterOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="ShortSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="ShortSquirtWaterOff" name="ShortSquirtWaterOff" required="" value="{{ settings[&#39;ShortSquirtWaterOff&#39;] }}" fdprocessedid="sd7t6">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת מים ארוכה</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureLongSquirt">כמות חזרות</label>
-                                <input type="number" id="recureLongSquirt" name="recureLongSquirt" required value="{{ settings['recureLongSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recureLongSquirt" name="recureLongSquirt" required="" value="{{ settings[&#39;recureLongSquirt&#39;] }}" fdprocessedid="e5hj24">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="LongSquirtWaterOn">משך כניסת מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="LongSquirtWaterOn" name="LongSquirtWaterOn" required value="{{ settings['LongSquirtWaterOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="LongSquirtWaterOn">משך כניסת מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="LongSquirtWaterOn" name="LongSquirtWaterOn" required="" value="{{ settings[&#39;LongSquirtWaterOn&#39;] }}" fdprocessedid="6iz6h4">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="LongSquirtWaterOff">משך ניקוז ללא מים בכל חזרה</label>
-                                <input type="number" step="0.01" id="LongSquirtWaterOff" name="LongSquirtWaterOff" required value="{{ settings['LongSquirtWaterOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="LongSquirtWaterOff">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="LongSquirtWaterOff" name="LongSquirtWaterOff" required="" value="{{ settings[&#39;LongSquirtWaterOff&#39;] }}" fdprocessedid="5ek3te">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">שטיפה במים יחד עם משאבה לבניית לחץ</div>
                         <div class="functionInputs row">
                             <div class="col-12 ParamterBox">
                                 <label for="RinseWaterWithPump">משך שטיפה במים עם משאבה לבניית לחץ</label>
-                                <input type="number" step="0.01" id="RinseWaterWithPump" name="RinseWaterWithPump" required value="{{ settings['RinseWaterWithPump'] }}">
-                                <label class="valType">שניות</label>
+                                <input type="number" step="0.01" id="RinseWaterWithPump" name="RinseWaterWithPump" required="" value="{{ settings[&#39;RinseWaterWithPump&#39;] }}" fdprocessedid="7jn32">
                             </div>
                         </div>
                     </div>
@@ -167,24 +152,21 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label3">
                         <div class="col">שלב #3 דחיקת מים לאחר שטיפה ראשונה החוצה עם אוויר</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl3"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl3"></div>
                     </div>
                     <div id="stage3" class="cloapsable row">
                         <div class="functionInputs row">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="PostWaterPurgeRecure">כמות חזרות</label>
-                                <input type="number" id="PostWaterPurgeRecure" name="PostWaterPurgeRecure" required value="{{ settings['PostWaterPurgeRecure'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="PostWaterPurgeRecure" name="PostWaterPurgeRecure" required="" value="{{ settings[&#39;PostWaterPurgeRecure&#39;] }}" fdprocessedid="n709al">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="PostWaterPurgeTon">משך כניסת אוויר בכל חזרה</label>
-                                <input type="number" step="0.01" id="PostWaterPurgeTon" name="PostWaterPurgeTon" required value="{{ settings['PostWaterPurgeTon'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="PostWaterPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="PostWaterPurgeTon" name="PostWaterPurgeTon" required="" value="{{ settings[&#39;PostWaterPurgeTon&#39;] }}" fdprocessedid="aert34">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="PostWaterPurgeToff">משך ניקוז ללא אוויר בכל חזרה</label>
-                                <input type="number" step="0.01" id="PostWaterPurgeToff" name="PostWaterPurgeToff" required value="{{ settings['PostWaterPurgeToff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="PostWaterPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="PostWaterPurgeToff" name="PostWaterPurgeToff" required="" value="{{ settings[&#39;PostWaterPurgeToff&#39;] }}" fdprocessedid="ezq5vc">
                             </div>
                         </div>
                     </div>
@@ -193,95 +175,81 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label4">
                         <div class="col">שלב #4 ניקוי בסודה קאוסטיק</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl4"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl4"></div>
                     </div>
                     <div id="stage4" class="cloapsable row">
                         <div class="functionInputs row fullborder">
                             <div class="col-12 ParamterBox">
-                                <label for="InitialCausticFlud">משך מילוי קאוסטיק ראשוני- ל2 החביות</label>
-                                <input type="number" step="0.01" id="InitialCausticFlud" name="InitialCausticFlud" required value="{{ settings['InitialCausticFlud'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="InitialCausticFlud">משך מילוי סודה קאוסטיק ראשוני- ל2 החביות בשניות</label>
+                                <input type="number" step="0.01" id="InitialCausticFlud" name="InitialCausticFlud" required="" value="{{ settings[&#39;InitialCausticFlud&#39;] }}" fdprocessedid="b2szp">
                             </div>
                         </div>
                         <div class="functionInputs row row fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="CausticRinseKeg1">משך רחיצה קאוסטיק חבית ימין</label>
-                                <input type="number" step="0.01" id="CausticRinseKeg1" name="CausticRinseKeg1" required value="{{ settings['CausticRinseKeg1'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticRinseKeg1">משך רחיצה קאוסטיק חבית ימין בשניות</label>
+                                <input type="number" step="0.01" id="CausticRinseKeg1" name="CausticRinseKeg1" required="" value="{{ settings[&#39;CausticRinseKeg1&#39;] }}" fdprocessedid="y60jv">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="CausticRinseKeg2">משך רחיצה קאוסטיק חבית שמאל</label>
-                                <input type="number" step="0.01" id="CausticRinseKeg2" name="CausticRinseKeg2" required value="{{ settings['CausticRinseKeg2'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticRinseKeg2">משך רחיצה קאוסטיק חבית שמאל בשניות</label>
+                                <input type="number" step="0.01" id="CausticRinseKeg2" name="CausticRinseKeg2" required="" value="{{ settings[&#39;CausticRinseKeg2&#39;] }}" fdprocessedid="qbjpowj">
                             </div>
                         </div>
                         <div class="functionSubLabel">כניסת קאוסטיק לחבית ללא יציאת הקאוסטיק לבניית לחץ</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="pressurizeCausticInKeg">משך דחיסת הקאוסטיק לחבית</label>
-                                <input type="number" step="0.01" id="pressurizeCausticInKeg" name="pressurizeCausticInKeg" required value="{{ settings['pressurizeCausticInKeg'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="pressurizeCausticInKeg">משך דחיסת הקאוסטיק לחבית בשניות</label>
+                                <input type="number" step="0.01" id="pressurizeCausticInKeg" name="pressurizeCausticInKeg" required="" value="{{ settings[&#39;pressurizeCausticInKeg&#39;] }}" fdprocessedid="621umb">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="causticSoakInKeg">משך השריית קאוסטיק בחבית בלחץ</label>
-                                <input type="number" step="0.01" id="causticSoakInKeg" name="causticSoakInKeg" required value="{{ settings['causticSoakInKeg'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="causticSoakInKeg">משך השריית קאוסטיק בחבית בלחץ בשניות</label>
+                                <input type="number" step="0.01" id="causticSoakInKeg" name="causticSoakInKeg" required="" value="{{ settings[&#39;causticSoakInKeg&#39;] }}" fdprocessedid="o2knca">
                             </div>
                         </div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 ParamterBox">
-                                <label for="SecondCausticFlud">משך מילוי קאוסטיק שני- ל2 החביות</label>
-                                <input type="number" step="0.01" id="SecondCausticFlud" name="SecondCausticFlud" required value="{{ settings['SecondCausticFlud'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="SecondCausticFlud">משך מילוי סודה קאוסטיק שני- ל2 החביות בשניות</label>
+                                <input type="number" step="0.01" id="SecondCausticFlud" name="SecondCausticFlud" required="" value="{{ settings[&#39;SecondCausticFlud&#39;] }}" fdprocessedid="wnkjdy">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת קאוסטיק קצרה</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureShortCausticSquirt">כמות חזרות</label>
-                                <input type="number" id="recureShortCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recureShortCausticSquirt" name="recureShortCausticSquirt" required="" value="{{ settings[&#39;recureShortCausticSquirt&#39;] }}" fdprocessedid="nuxelg">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="CausticSquirtPumpOn">משך הפעלת משאבה</label>
-                                <input type="number" step="0.01" id="CausticSquirtPumpOn" name="CausticSquirtPumpOn" required value="{{ settings['CausticSquirtPumpOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticSquirtPumpOn">משך הפעלת משאבה בשניות</label>
+                                <input type="number" step="0.01" id="CausticSquirtPumpOn" name="CausticSquirtPumpOn" required="" value="{{ settings[&#39;CausticSquirtPumpOn&#39;] }}" fdprocessedid="t01rkc">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="CausticSquirtPumpOff">משך כיבוי משאבה</label>
-                                <input type="number" step="0.01" id="CausticSquirtPumpOff" name="CausticSquirtPumpOff" required value="{{ settings['CausticSquirtPumpOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticSquirtPumpOff">משך כיבוי משאבה בשניות</label>
+                                <input type="number" step="0.01" id="CausticSquirtPumpOff" name="CausticSquirtPumpOff" required="" value="{{ settings[&#39;CausticSquirtPumpOff&#39;] }}" fdprocessedid="wbn2uh">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת קאוסטיק בשילוב אוויר</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="recurePurgeCausticSquirt">כמות חזרות</label>
-                                <input type="number" id="recurePurgeCausticSquirt" name="recureShortCausticSquirt" required value="{{ settings['recureShortCausticSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recurePurgeCausticSquirt" name="recureShortCausticSquirt" required="" value="{{ settings[&#39;recureShortCausticSquirt&#39;] }}" fdprocessedid="iwnvs">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="airAndPumpIntervale">אינטרוול אוויר ומשאבה</label>
-                                <input type="number" step="0.01" id="airAndPumpIntervale" name="airAndPumpIntervale" required value="{{ settings['airAndPumpIntervale'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="airAndPumpIntervale">אינטרוול אוויר ומשאבה בשניות</label>
+                                <input type="number" step="0.01" id="airAndPumpIntervale" name="airAndPumpIntervale" required="" value="{{ settings[&#39;airAndPumpIntervale&#39;] }}" fdprocessedid="n0c6ta">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת קאוסטיק ארוכה- לאחר התזה בשילוב אוויר</div>
                         <div class="functionInputs row">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="recureLastCausticSquirt">כמות חזרות</label>
-                                <input type="number" id="recureLastCausticSquirt" name="recureLastCausticSquirt" required value="{{ settings['recureLastCausticSquirt'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="recureLastCausticSquirt" name="recureLastCausticSquirt" required="" value="{{ settings[&#39;recureLastCausticSquirt&#39;] }}" fdprocessedid="b5wyoa">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="CausticLastSquirtPumpOn">משך הפעלת משאבה</label>
-                                <input type="number" step="0.01" id="CausticLastSquirtPumpOn" name="CausticLastSquirtPumpOn" required value="{{ settings['CausticLastSquirtPumpOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticLastSquirtPumpOn">משך הפעלת משאבה בשניות</label>
+                                <input type="number" step="0.01" id="CausticLastSquirtPumpOn" name="CausticLastSquirtPumpOn" required="" value="{{ settings[&#39;CausticLastSquirtPumpOn&#39;] }}" fdprocessedid="zjanyo">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="CausticLastSquirtPumpOff">משך כיבוי משאבה</label>
-                                <input type="number" step="0.01" id="CausticLastSquirtPumpOff" name="CausticLastSquirtPumpOff" required value="{{ settings['CausticLastSquirtPumpOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="CausticLastSquirtPumpOff">משך כיבוי משאבה בשניות</label>
+                                <input type="number" step="0.01" id="CausticLastSquirtPumpOff" name="CausticLastSquirtPumpOff" required="" value="{{ settings[&#39;CausticLastSquirtPumpOff&#39;] }}" fdprocessedid="0ulin">
                             </div>
                         </div>
                     </div>
@@ -289,24 +257,21 @@
                 <!-- stage 5-->
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label5">
-                        <div class="col">שלב #5 דחיקת סודה קאוסטיק החוצה עם אוויר</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl5"></div>
+                        <div class="col">שלב #5 דחיקת קאוסטיק החוצה עם אוויר</div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl5"></div>
                     </div>
                     <div class="functionInputs row row" id="stage5">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="PostCausticPurgeRecure">כמות חזרות</label>
-                            <input type="number" id="PostCausticPurgeRecure" name="PostCausticPurgeRecure" required value="{{ settings['PostCausticPurgeRecure'] }}">
-                            <label class="valType">פעמים</label>
+                            <input type="number" step="0.01" id="PostCausticPurgeRecure" name="PostCausticPurgeRecure" required="" value="{{ settings[&#39;PostCausticPurgeRecure&#39;] }}" fdprocessedid="1vcckk">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
-                            <label for="PostCausticPurgeTon">משך כניסת אוויר בכל חזרה</label>
-                            <input type="number" step="0.01" id="PostCausticPurgeTon" name="PostCausticPurgeTon" required value="{{ settings['PostCausticPurgeTon'] }}">
-                            <label class="valType">שניות</label>
+                            <label for="PostCausticPurgeTon">משך כניסת אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="PostCausticPurgeTon" name="PostCausticPurgeTon" required="" value="{{ settings[&#39;PostCausticPurgeTon&#39;] }}" fdprocessedid="x29x0w">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
-                            <label for="PostCausticPurgeToff">משך ניקוז ללא אוויר בכל חזרה</label>
-                            <input type="number" step="0.01" id="PostCausticPurgeToff" name="PostCausticPurgeToff" required value="{{ settings['PostCausticPurgeToff'] }}">
-                            <label class="valType">שניות</label>
+                            <label for="PostCausticPurgeToff">משך ניקוז ללא אוויר בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="PostCausticPurgeToff" name="PostCausticPurgeToff" required="" value="{{ settings[&#39;PostCausticPurgeToff&#39;] }}" fdprocessedid="5u8i5g">
                         </div>
                     </div>
                 </div>
@@ -314,23 +279,20 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label6">
                         <div class="col">שלב #6 שטיפה במים לאחר ניקוי קאוסטיק</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl6"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl6"></div>
                     </div>
                     <div class="functionInputs row row" id="stage6">
                         <div class="col-12 col-md-3 ParamterBox">
                             <label for="postCausticWaterRinseRecure">כמות חזרות</label>
-                            <input type="number" id="postCausticWaterRinseRecure" name="postCausticWaterRinseRecure" required value="{{ settings['postCausticWaterRinseRecure'] }}">
-                            <label class="valType">פעמים</label>
+                            <input type="number" step="0.01" id="postCausticWaterRinseRecure" name="postCausticWaterRinseRecure" required="" value="{{ settings[&#39;postCausticWaterRinseRecure&#39;] }}" fdprocessedid="657v70j">
                         </div>
                         <div class="col-12 col-md-4 ParamterBox">
-                            <label for="postCausticWaterRinseOn">משך כניסת מים בכל חזרה</label>
-                            <input type="number" step="0.01" id="postCausticWaterRinseOn" name="postCausticWaterRinseOn" required value="{{ settings['postCausticWaterRinseOn'] }}">
-                            <label class="valType">שניות</label>
+                            <label for="postCausticWaterRinseOn">משך כניסת מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="postCausticWaterRinseOn" name="postCausticWaterRinseOn" required="" value="{{ settings[&#39;postCausticWaterRinseOn&#39;] }}" fdprocessedid="z8bgap">
                         </div>
                         <div class="col-12 col-md-5 ParamterBox">
-                            <label for="postCausticWaterRinseOf">משך ניקוז ללא מים בכל חזרה</label>
-                            <input type="number" step="0.01" id="postCausticWaterRinseOf" name="postCausticWaterRinseOf" required value="{{ settings['postCausticWaterRinseOf'] }}">
-                            <label class="valType">שניות</label>
+                            <label for="postCausticWaterRinseOf">משך ניקוז ללא מים בכל חזרה בשניות</label>
+                            <input type="number" step="0.01" id="postCausticWaterRinseOf" name="postCausticWaterRinseOf" required="" value="{{ settings[&#39;postCausticWaterRinseOf&#39;] }}" fdprocessedid="h8ty1t">
                         </div>
                     </div>
                 </div>
@@ -338,63 +300,56 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label7">
                         <div class="col">שלב #7 חיטוי בחומצה פראצטית</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl7"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl7"></div>
                     </div>
                     <div id="stage7" class="cloapsable row">
-                        <div class="functionInputs row fullborder reduceFont">
-                            <div class="col-12 col-md-4 ParamterBox">
-                                <label for="SanitizeInitialKeg1">משך מילוי פראצטית חבית ימין</label>
-                                <input type="number" step="0.01" id="SanitizeInitialKeg1" name="SanitizeInitialKeg1" required value="{{ settings['SanitizeInitialKeg1'] }}">
-                                <label class="valType">שניות</label>
+                        <div class="functionInputs row fullborder">
+                            <div class="col-12 col-md-6 ParamterBox">
+                                <label for="SanitizeInitialKeg1">משך חיטוי פראצטית חבית ימין בשניות</label>
+                                <input type="number" step="0.01" id="SanitizeInitialKeg1" name="SanitizeInitialKeg1" required="" value="{{ settings[&#39;SanitizeInitialKeg1&#39;] }}" fdprocessedid="f6dzx">
                             </div>
-                            <div class="col-12 col-md-4 ParamterBox">
-                                <label for="SanitizeInitialKeg2">משך מילוי פראצטית חבית שמאל</label>
-                                <input type="number" step="0.01" id="SanitizeInitialKeg2" name="SanitizeInitialKeg2" required value="{{ settings['SanitizeInitialKeg2'] }}">
-                                <label class="valType">שניות</label>
+                            <div class="col-12 col-md-6 ParamterBox">
+                                <label for="SanitizeInitialKeg2">משך חיטוי פראצטית חבית שמאל בשניות</label>
+                                <input type="number" step="0.01" id="SanitizeInitialKeg2" name="SanitizeInitialKeg2" required="" value="{{ settings[&#39;SanitizeInitialKeg2&#39;] }}" fdprocessedid="942o2m">
                             </div>
-                            <div class="col-12 col-md-4 ParamterBox">
-                                <label for="SanitizeInitialBothKegs">משך מילוי פראצטית ל2 החביות</label>
-                                <input type="number" step="0.01" id="SanitizeInitialBothKegs" name="SanitizeInitialBothKegs" required value="{{ settings['SanitizeInitialBothKegs'] }}">
-                                <label class="valType">שניות</label>
+                        </div>
+                        <div class="functionInputs row fullborder">
+                            <div class="col-12 ParamterBox">
+                                <label for="SanitizeInitialBothKegs">משך חיטוי פראצטית ל2 החביות בשניות</label>
+                                <input type="number" step="0.01" id="SanitizeInitialBothKegs" name="SanitizeInitialBothKegs" required="" value="{{ settings[&#39;SanitizeInitialBothKegs&#39;] }}" fdprocessedid="or08dh">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת פראצטית ראשונה</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="paaInitialPumpRecure">כמות חזרות</label>
-                                <input type="number" id="paaInitialPumpRecure" name="paaInitialPumpRecure" required value="{{ settings['paaInitialPumpRecure'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="paaInitialPumpRecure" name="paaInitialPumpRecure" required="" value="{{ settings[&#39;paaInitialPumpRecure&#39;] }}" fdprocessedid="ytb4er">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="paaInitialPumpOn">משך הפעלת משאבה</label>
-                                <input type="number" step="0.01" id="paaInitialPumpOn" name="paaInitialPumpOn" required value="{{ settings['paaInitialPumpOn'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="paaInitialPumpOn">משך הפעלת משאבה בשניות</label>
+                                <input type="number" step="0.01" id="paaInitialPumpOn" name="paaInitialPumpOn" required="" value="{{ settings[&#39;paaInitialPumpOn&#39;] }}" fdprocessedid="4d5xjl">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="paaInitialPumpOff">משך כיבוי משאבה</label>
-                                <input type="number" step="0.01" id="paaInitialPumpOff" name="paaInitialPumpOff" required value="{{ settings['paaInitialPumpOff'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="paaInitialPumpOff">משך כיבוי משאבה בשניות</label>
+                                <input type="number" step="0.01" id="paaInitialPumpOff" name="paaInitialPumpOff" required="" value="{{ settings[&#39;paaInitialPumpOff&#39;] }}" fdprocessedid="egjbmf">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">התזת פראצטית בשילוב CO2</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="paaSquirtRecure">כמות חזרות</label>
-                                <input type="number" id="paaSquirtRecure" name="paaSquirtRecure" required value="{{ settings['paaSquirtRecure'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="paaSquirtRecure" name="paaSquirtRecure" required="" value="{{ settings[&#39;paaSquirtRecure&#39;] }}" fdprocessedid="r4tmc">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="Co2PumpIntervale">אינטרוול CO2 ומשאבה</label>
-                                <input type="number" step="0.01" id="Co2PumpIntervale" name="Co2PumpIntervale" required value="{{ settings['Co2PumpIntervale'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="Co2PumpIntervale">אינטרוול CO2 ומשאבה בשניות</label>
+                                <input type="number" step="0.01" id="Co2PumpIntervale" name="Co2PumpIntervale" required="" value="{{ settings[&#39;Co2PumpIntervale&#39;] }}" fdprocessedid="ycbclr">
                             </div>
                         </div>
-                        <div class="functionSubLabel fullborder">חיטוי פראצטית ארוך לשני החביות- לאחר התזה בשילוב CO2</div>
+                        <div class="functionSubLabel fullborder">חיטוי בחומצה פראצטית ארוך לשני החביות- לאחר התזה בשילוב CO2</div>
                         <div class="functionInputs row">
                             <div class="col-12 ParamterBox">
-                                <label for="postSquirtSanitizeBothKegs">משך חיטוי פראצטית ארוך לשני החביות</label>
-                                <input type="number" step="0.01" id="postSquirtSanitizeBothKegs" name="postSquirtSanitizeBothKegs" required value="{{ settings['postSquirtSanitizeBothKegs'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="postSquirtSanitizeBothKegs">משך חיטוי בחומצה פראצטית ארוך לשני החביות</label>
+                                <input type="number" step="0.01" id="postSquirtSanitizeBothKegs" name="postSquirtSanitizeBothKegs" required="" value="{{ settings[&#39;postSquirtSanitizeBothKegs&#39;] }}" fdprocessedid="qq6el8">
                             </div>
                         </div>
                     </div>
@@ -403,51 +358,44 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label8">
                         <div class="col">שלב #8 דחיקת חומצה פראצטית החוצה עם CO2</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl8"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl8"></div>
                     </div>
                     <div id="stage8" class="cloapsable row">
                         <div class="functionSubLabel fullborder">חבית ימין</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="co2PurgeKeg1Recure">כמות חזרות</label>
-                                <input type="number" id="co2PurgeKeg1Recure" name="co2PurgeKeg1Recure" required value="{{ settings['co2PurgeKeg1Recure'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg1Recure" name="co2PurgeKeg1Recure" required="" value="{{ settings[&#39;co2PurgeKeg1Recure&#39;] }}" fdprocessedid="ogogdn">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="co2PurgeKeg1Open">משך כניסת CO2 בכל חזרה</label>
-                                <input type="number" step="0.01" id="co2PurgeKeg1Open" name="co2PurgeKeg1Open" required value="{{ settings['co2PurgeKeg1Open'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="co2PurgeKeg1Open">משך כניסת CO2 בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg1Open" name="co2PurgeKeg1Open" required="" value="{{ settings[&#39;co2PurgeKeg1Open&#39;] }}" fdprocessedid="8k6d8m">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="co2PurgeKeg1Closed">משך ניקוז ללא CO2 בכל חזרה</label>
-                                <input type="number" step="0.01" id="co2PurgeKeg1Closed" name="co2PurgeKeg1Closed" required value="{{ settings['co2PurgeKeg1Closed'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="co2PurgeKeg1Closed">משך ניקוז ללא CO2 בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg1Closed" name="co2PurgeKeg1Closed" required="" value="{{ settings[&#39;co2PurgeKeg1Closed&#39;] }}" fdprocessedid="d7zndf">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">חבית שמאל</div>
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-3 ParamterBox">
                                 <label for="co2PurgeKeg2Recure">כמות חזרות</label>
-                                <input type="number" id="co2PurgeKeg2Recure" name="co2PurgeKeg2Recure" required value="{{ settings['co2PurgeKeg2Recure'] }}">
-                                <label class="valType">פעמים</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg2Recure" name="co2PurgeKeg2Recure" required="" value="{{ settings[&#39;co2PurgeKeg2Recure&#39;] }}" fdprocessedid="it87i8">
                             </div>
                             <div class="col-12 col-md-4 ParamterBox">
-                                <label for="co2PurgeKeg2Open">משך כניסת CO2 בכל חזרה</label>
-                                <input type="number" step="0.01" id="co2PurgeKeg2Open" name="co2PurgeKeg2Open" required value="{{ settings['co2PurgeKeg2Open'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="co2PurgeKeg2Open">משך כניסת CO2 בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg2Open" name="co2PurgeKeg2Open" required="" value="{{ settings[&#39;co2PurgeKeg2Open&#39;] }}" fdprocessedid="fqthf">
                             </div>
                             <div class="col-12 col-md-5 ParamterBox">
-                                <label for="co2PurgeKeg2Closed">משך ניקוז ללא CO2 בכל חזרה</label>
-                                <input type="number" step="0.01" id="co2PurgeKeg2Closed" name="co2PurgeKeg2Closed" required value="{{ settings['co2PurgeKeg2Closed'] }}">
-                                <label class="valType">שניות</label>
+                                <label for="co2PurgeKeg2Closed">משך ניקוז ללא CO2 בכל חזרה בשניות</label>
+                                <input type="number" step="0.01" id="co2PurgeKeg2Closed" name="co2PurgeKeg2Closed" required="" value="{{ settings[&#39;co2PurgeKeg2Closed&#39;] }}" fdprocessedid="0xbwei">
                             </div>
                         </div>
                         <div class="functionSubLabel fullborder">חבית ימין ושמאל יחד</div>
                             <div class="functionInputs row">
                                 <div class="col-12 ParamterBox">
                                 <label for="co2PurgeBothKegsOpen">משך דחיקת חומצה פראצטית החוצה עם CO2 ל 2 החביות</label>
-                                <input type="number" step="0.01" id="co2PurgeBothKegsOpen" name="co2PurgeBothKegsOpen" required value="{{ settings['co2PurgeBothKegsOpen'] }}">
-                                <label class="valType">שניות</label>
+                                <input type="number" step="0.01" id="co2PurgeBothKegsOpen" name="co2PurgeBothKegsOpen" required="" value="{{ settings[&#39;co2PurgeBothKegsOpen&#39;] }}" fdprocessedid="kwc0lc">
                             </div>
                         </div>
                     </div>
@@ -456,31 +404,27 @@
                 <div class="functionBox container-fluid">
                     <div class="functionLabel row" id="label9">
                         <div class="col">שלב #9 בניית לחץ בחבית עם CO2</div>
-                        <div class="col TglBtnBox"><img src="assets/pics/down.png" id="Tgl9"></div>
+                        <div class="col TglBtnBox"><img src="./Keg washer Control_files/down.png" id="Tgl9"></div>
                     </div>
                     <div id="stage9" class="cloapsable row">
                         <div class="functionInputs row fullborder">
                             <div class="col-12 col-md-6 ParamterBox">
-                                <label for="kegPdestination">לחץ יעד</label>
-                                <input type="number" disabled step="0.1" id="kegPdestination" name="kegPdestination" required value="{{ settings['kegPdestination'] }}">
-                                <label class="valType">PSI</label>
+                                <label for="kegPdestination">לחץ יעד ב PSI</label>
+                                <input type="number" step="0.01" id="kegPdestination" name="kegPdestination" required="" value="{{ settings[&#39;kegPdestination&#39;] }}" fdprocessedid="tyhju" disabled="">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="TimeOutPdestination">משך המתנה להגעה ליעד</label>
-                                <input type="number" disabled step="0.01" id="TimeOutPdestination" name="TimeOutPdestination" required value="{{ settings['TimeOutPdestination'] }}">
-                                <label class="valType">שניות</label>
+                                <input type="number" step="0.01" id="TimeOutPdestination" name="TimeOutPdestination" required="" value="{{ settings[&#39;TimeOutPdestination&#39;] }}" fdprocessedid="s6d6f" disabled="">
                             </div>
                         </div>
                         <div class="functionInputs row">
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="PostTimeOutBuildP">משך בניית לחץ לאחר המתנה במידה ולא הגיע ללחץ יעד</label>
-                                <input type="number" disabled step="0.01" id="PostTimeOutBuildP" name="PostTimeOutBuildP" required value="{{ settings['PostTimeOutBuildP'] }}">
-                                <label class="valType">שניות</label>
+                                <input type="number" step="0.01" id="PostTimeOutBuildP" name="PostTimeOutBuildP" required="" value="{{ settings[&#39;PostTimeOutBuildP&#39;] }}" fdprocessedid="ltce88" disabled="">
                             </div>
                             <div class="col-12 col-md-6 ParamterBox">
                                 <label for="PTimeWhenSensorDisabled">משך בניית לחץ במידה ומתג חיישני לחץ כבוי</label>
-                                <input type="number" step="0.01" id="PTimeWhenSensorDisabled" name="PTimeWhenSensorDisabled" required value="{{ settings['PTimeWhenSensorDisabled'] }}">
-                                <label class="valType">שניות</label>
+                                <input type="number" step="0.01" id="PTimeWhenSensorDisabled" name="PTimeWhenSensorDisabled" required="" value="{{ settings[&#39;PTimeWhenSensorDisabled&#39;] }}" fdprocessedid="w0xz7e">
                             </div>
                         </div>
                     </div>
@@ -493,93 +437,10 @@
                 </div>
             </div>
             <div id="confirmBox" class="hiddenBox">
-                <div id="conirmContent">מרענן מהשרת</div>
-                <button id="exitConfirm">אישור</button>
+                <div id="conirmContent">נתונים נטענו בהצלחה מהשרת!</div>
+                <button id="exitConfirm" fdprocessedid="ib6gjn">שלח נתונים</button>
             </div>
         </form>
-
-        <div id="DefValDisplayBox" class="hiddenValBox">
-            <div class="col exitBtnBox"><img src="assets/pics/Close.png" id="CloseDefaultValBox"></div>
-            <div class="DowloadBox" id="topSubmit">
-                <button type="button" id="DownloadPdfTop" class="formBtn">שמור כקובץ PDF</button>
-            </div>
-                <!-- stage 0 -->
-                <div class="row">
-                    <div class="col-12 col-md-6 DefeStageRow" id="stage0_1">
-                        <div class="DefAtribute">סייקל בדיקה ראשוני</div>
-                        <div class="DefVal">דלוק</div>
-                    </div>
-                    <div class="col-12 col-md-6 DefeStageRow" id="stage0_2">
-                        <div class="DefAtribute">חיישני לחץ
-                            <div class="note">יפעל רק אם המתג המכני מופעל!</div></div>
-                            <div class="DefVal">כבוי</div>
-                        </div>
-                    </div>
-                    <div class="DefValBox">
-                <!-- stage 1 -->
-                <div class="col-12 DefeStageLabel">שלב #1 דחיקת בירה החוצה עם אוויר</div>
-                <div class="row defStageBox ">
-                        <div class="col-12 col-md-4 DefeStageRow">
-                            <div for="FirstAirPurgeRecure">כמות חזרות</div>
-                            <div class="note">במידה ולאחר סיום- כפתור ההפעלה לחוץ, יפעל שוב- עד לעזיבת הכפתור</div>
-                            <div class="DefVal">1</div>
-                            <div class="DefSpec">פעמים</div>
-                        </div>
-                        <div class="col-12 col-md-4 DefeStageRow">
-                            <div for="FirstAirPurgeTon">משך כניסת אוויר בכל חזרה</div>
-                            <div class="DefVal">1</div>
-                            <div class="DefSpec">שניות</div>
-                        </div>
-                        <div class="col-12 col-md-4 DefeStageRow">
-                            <div for="FirstAirPurgeToff">משך ניקוז ללא אוויר בכל חזרה</div>
-                            <div class="DefVal">1.5</div>
-                            <div class="DefSpec">שניות</div>
-                        </div>
-                </div>
-                <!-- stage 2-->
-                    <div class="col-12 DefeStageLabel">שלב #2 שטיפה ראשונה במים</div>
-                    <div class="row defStageBox">
-                            <div class="col-12 col-md-4 DefeStageRow">
-                                <div for="InitialWaterFlud">משך מילוי מים ראשוני</div>
-                                <div class="DefVal">4</div>
-                                <div class="DefSpec">שניות</div>
-                            </div>
-                                <div class=" col-12 DefeStageRow functionSubLabel">התזת מים בינונית</div>
-                            <div class="col-12 col-md-4 DefeStageRow">
-                                <div for="recureMedSquirt">כמות חזרות</div>
-                                <div class="DefVal">6</div>
-                                <div class="DefSpec">פעמים</div>
-                            </div>
-                            <div class="col-12 col-md-4 DefeStageRow">
-                                <div for="medSquirtWaterOn">משך כניסת מים בכל חזרה</div>
-                                <div class="DefVal">0.4</div>
-                                <div class="DefSpec">שניות</div>
-                            </div>
-                            <div class="col-12 col-md-4 DefeStageRow">
-                                <div for="medSquirtWaterOff">משך ניקוז ללא מים בכל חזרה</div>
-                                <div class="DefVal">0.3</div>
-                                <div class="DefSpec">שניות</div>
-                            </div>
-
-                </div>
-                <!-- stage 3-->
-
-                <!-- stage 4-->
-
-                <!-- stage 5-->
-
-                <!-- stage 6-->
-
-                <!-- stage 7-->
-
-                <!-- stage 8 -->
-
-                <!-- stage 9 -->
-
-                
-        </div>
-        
-    </div>
     </div>
 
 
@@ -627,29 +488,9 @@
         let preboobotMeteg = 1;
         let pressureMeteg = 1;
 
-        function showDefaultVals(){
-            document.getElementById("DefValDisplayBox").classList.add("DefValDisplayBox");
-            document.getElementById("DefValDisplayBox").classList.remove("hiddenValBox");
-            document.getElementById("bodyBox").classList.add("disable_scroll");       // Add infoBox class
-            let form = document.getElementById("control-form");
-            let formElements = form.elements;
-            for (let i = 0; i < formElements.length; i++) {
-                formElements[i].disabled = true;  // Disable each form element
-            }
-            let exitBnt= document.getElementById("exitConfirm");
-            exitBnt.disabled = false
-            LabelList.forEach(function(labelId) {
-                let LabelElemnt = form.querySelector(`#${labelId}`);
-                if (LabelElemnt) {
-                    LabelElemnt.classList.add("functionLabelDisable");
-                }
-            });
-        }
-
         function DisableItems(){
             let confirmBox = document.getElementById("confirmBox");
             let body = document.getElementById("bodyBox");
-            document.getElementById("CloseDefaultValBox").classList.add("functionLabelDisable")
             confirmBox.classList.remove("hiddenBox");  // Remove hidden class
             confirmBox.classList.add("infoBox");       // Add infoBox class
             body.classList.add("disable_scroll");       // Add infoBox class
@@ -875,35 +716,6 @@
             let confirmBox = document.getElementById("confirmBox");
             confirmBox.classList.remove("infoBox");    // Remove infoBox class
             confirmBox.classList.add("hiddenBox");      // Add hiddenBox class
-            document.getElementById("CloseDefaultValBox").classList.remove("functionLabelDisable")
-            if (document.getElementById("DefValDisplayBox").classList.contains("DefValDisplayBox")== false){
-                let body = document.getElementById("bodyBox");
-                body.classList.remove("disable_scroll");
-                let form = document.getElementById("control-form");
-                let formElements = form.elements;
-                for (let i = 0; i < formElements.length; i++) {
-                    formElements[i].disabled = false;  // Disable each form element
-                }
-                disabledInputs.forEach(function(inputId) {
-                    let inputElement = form.querySelector(`#${inputId}`);
-                    if (inputElement) {
-                        inputElement.disabled = true;
-                    }
-                });
-                LabelList.forEach(function(labelId) {
-                    let LabelElemnt = form.querySelector(`#${labelId}`);
-                    if (LabelElemnt) {
-                        LabelElemnt.classList.remove("functionLabelDisable");
-                    }
-                });
-            }
-        });
-
-        document.getElementById("CloseDefaultValBox").addEventListener("click", function(event) {
-            document.getElementById("DefValDisplayBox").classList.remove("DefValDisplayBox");
-            document.getElementById("DefValDisplayBox").classList.add("hiddenValBox");
-            event.preventDefault();  // Prevents form submission (and reload)
-            console.log("Valuebox is closed so dsabled the rest of the bodt")
             let body = document.getElementById("bodyBox");
             body.classList.remove("disable_scroll");
             let form = document.getElementById("control-form");
@@ -925,18 +737,11 @@
             });
         });
 
-        document.getElementById("showDefaultsTop").addEventListener("click",function(event){
-            showDefaultVals();
-        });
-        document.getElementById("showDefaults").addEventListener("click",function(event){
-            showDefaultVals();
-        });
-
         $('#control-form').on('submit', function(e) {
                 e.preventDefault(); // Prevent the default form submission
                 update()
             });
- 
+            // RESET NEEDS TO TAKE BUTTONS IN TO ACCOUNT...
         $('#reset-btn').on('click', function() {
             reset();
         });
@@ -975,6 +780,65 @@
         toggleStage("label9", "stage9","Tgl9");
 
     </script>
-    </body>
-</html>
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 
+
+
+<div id="veepn-breach-alert"><template shadowrootmode="open"><style>.breach-popup{font-family:FigtreeVF,sans-serif;position:fixed;z-index:2147483638;-webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;top:0;left:0;right:0;pointer-events:none;padding-inline:16px;height:0;overflow:visible;color:#222e3a}.breach-popup *{box-sizing:border-box}.breach-popup__inner{background-color:#de4558;width:100%;border-radius:16px;margin-inline:auto;pointer-events:all;position:relative;transition:transform .25s ease-in-out,max-width .25s ease-in-out;transform:translateY(16px);max-height:calc(100svh - 80px);display:flex;flex-direction:column}.breach-popup__header{min-height:32px;display:flex;align-items:center;justify-content:space-between;column-gap:16px;padding:4px;cursor:pointer}.breach-popup__close{cursor:pointer;background-color:transparent;border-style:none;outline:none;display:flex;align-items:center;justify-content:center;width:24px;height:24px;flex-shrink:0;opacity:.5}.breach-popup__wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease-in-out;overflow:hidden}.breach-popup__content{overflow:hidden;opacity:0;transform:translateY(-10px)}.breach-popup--minimize .breach-popup__inner{max-width:485px;transform:translateY(-100%)}.breach-popup--collapse .breach-popup__inner{max-width:485px}.breach-popup--expand .breach-popup__inner{max-width:1120px}.breach-popup--expand .breach-popup__wrap{grid-template-rows:1fr}.breach-popup--expand .breach-popup__content{opacity:1;transform:translateY(0);transition:transform .25s ease-in-out,opacity .25s ease-in-out;transition-delay:.15s}.breach-popup--expand .breach-popup__header{cursor:default}.breach-info{padding:2px;height:100%}.breach-info__inner{padding:22px 22px 0;background-color:#fff;border-bottom-left-radius:15px;border-bottom-right-radius:15px;height:100%;overflow:auto}.breach-info__alert{font-size:24px;line-height:32px;font-weight:700;margin:0}.breach-info__list{margin-top:24px;display:flex;flex-wrap:wrap;gap:24px}@media only screen and (width >= 992px){.breach-info__list{flex-wrap:nowrap}}.breach-info__item{width:100%}.breach-info__item:nth-child(2){max-width:320px}.breach-info__item:nth-child(3){max-width:200px}.breach-info__title{font-size:18px;font-weight:700;line-height:32px;letter-spacing:-.1px;color:#de4558;margin-top:0;margin-bottom:4px}.breach-info__description{font-size:16px;line-height:28px;letter-spacing:-.1px}.breach-info__description ul{margin:0}.breach-info__actions{display:flex;justify-content:center;padding-top:32px;padding-bottom:22px;background-color:#fff;position:sticky;bottom:0}.breach-info__btn{cursor:pointer;border-style:none;outline:none;display:inline-flex;align-items:center;height:48px;padding-inline:20px;border-radius:12px;text-align:center;font-size:16px;font-weight:700;line-height:28px;letter-spacing:-.1px;color:#fff;background-color:#ff6400}.button-expand{position:absolute;bottom:0;left:50%;transform:translate(-50%,100%);z-index:1}.button-expand__pointer{cursor:pointer}.button-expand__alert{pointer-events:none;transition:opacity .25s ease-in-out}.button-expand__arrow{pointer-events:none;transition:transform .25s ease-in-out,opacity .25s ease-in-out;transform-origin:center}.button-expand--minimize .button-expand__arrow,.button-expand--collapse .button-expand__alert,.button-expand--expand .button-expand__alert{opacity:0}.button-expand--expand .button-expand__arrow{transform:rotate(180deg)}.header-collapse{display:flex;align-items:center;flex-wrap:wrap;column-gap:4px;padding-left:8px;font-size:14px;line-height:20px;letter-spacing:-.1px;color:#fff}.header-expand{display:flex;align-items:center;flex-wrap:wrap;column-gap:4px;padding-left:20px;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.1px;color:#fff}</style></template></div><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style><span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>

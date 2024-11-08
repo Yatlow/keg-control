@@ -35,26 +35,8 @@ html{
     padding-bottom: 30px;
     font-size: 16px;
 }
-.DefValDisplayBox{
-    display: inline-block;
-    position: fixed;
-    right: 18%;
-    top: 10%;
-    width: 60%;
-    overflow: hidden;
-    max-height: max-content;
-    border: #937002 5px groove;
-    background-color: #FFE9A4;
-    padding: 2%;
-    transition: max-height 200ms linear, padding 100ms linear;
-    border-radius: 20px;
-}
-
-.SubmitionBox,.DowloadBox{
+.SubmitionBox{
     margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
 }
 .functionBox{
     border: solid 0.6px rgb(200, 200, 200,0.7);
@@ -75,12 +57,8 @@ html{
     transition: border-radius 200ms linear;
 
 }
-.functionLabel:hover,#CloseDefaultValBox:hover{
+.functionLabel:hover{
     cursor: pointer;   
-}
-#CloseDefaultValBox:hover{
-    transform: scale(1.4);
-    transition: transform 200ms linear;
 }
 .FirstfunctionLabel{
     border-radius: 20px;
@@ -112,42 +90,8 @@ html{
 .FNCTglHouse:hover{
     cursor: pointer;
 }
-.DefeStageLabel{
-    background-color: #DFB725;
-    padding: 10px;
-}
-.DefeStageRow{
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10px;
-    border-right: solid 0.6px rgb(200, 200, 200,0.7); 
-    border-left: solid 0.6px rgb(200, 200, 200,0.7); 
-}
-#stage0_1,#stage0_2{
-    border: none;
-}
-
-.defStageBox{
-    border: solid 0.6px rgb(200, 200, 200,0.7); 
-}
 .note{
     font-size: 10px;
-}
-.valType{
-    font-size: 11px;
-    color: #D34607;
-}
-.DefVal{
-    font-size: 25px;
-    color: #D34607;
-}
-.DefeStageLabel:first-child{
-    border-radius: 20px 20px 0 0;   
-}
-.DefAtribute{
-    font-style: bolder;
 }
 .FNCTglBtn{
     display: flex;
@@ -158,16 +102,10 @@ html{
     color: #842F00;
     border-radius: 20px;
 }
-#CloseDefaultValBox{
-    height: 30px;
-    width: 30px;
-}
-.TglBtnBox,.exitBtnBox{
+.TglBtnBox{
     display: flex;
     justify-content: end;
 }
-
-
 .functionLabel img{
     height: 20px;
     width: 25px;
@@ -206,15 +144,12 @@ html{
     padding: 0;
     max-height: 0;
 }
-.hiddenValBox{
-    padding: 0;
-    max-height: 0;
-    /* display: none; */
-}
+
 .functionSubLabel{
     padding: 10px;
     padding-right: 20px;
     background-color: #E0C263;
+    /* border-radius:0 ; */
 }
 .functionInputs input{
     width: 90px;
@@ -225,6 +160,7 @@ html{
     height: 40px;
 }
 .functionInputs input:focus{
+    /* border: #937002; */
     outline: #937002 2px solid;
     border: none;
 }
@@ -236,13 +172,15 @@ html{
 }
 
 .infoBox {
+    /* width: 40%;
+    right: 30%; */
     display:inline-block;
     position: fixed;
     height: 25%;
     text-align: center;
     top: 30%;
     z-index:10 ;
-    border: #937002 3px groove;
+    border:  #937002 3px solid;
     background-color: #DFB725;
     border-radius: 20px;
 }
@@ -256,6 +194,11 @@ html{
     padding: 5px 15px ;
     background-color: #FFE9A4;
     /* background-color: #E0C263; */
+}
+.SubmitionBox{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
 }
 .formBtn{
     /* margin: auto; */
@@ -294,9 +237,7 @@ html{
         width: 50px;
         height: 38px;
     }
-    .reduceFont{
-        font-size: 15px;
-    }
+    
 }
 @media (max-width: 768px) {/*small screens */
     .H1{
